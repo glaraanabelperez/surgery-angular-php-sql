@@ -1,0 +1,231 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@500&display=swap');
+
+$font: 'Open+Sans', sans-serif;
+$font-tamanio-botones:12px;
+$color-gris:gainsboro;
+$color-gris-claro:rgb(239, 240, 238);
+$color-amarillo:#f8e964;
+$color-verde:#abd026;
+$white: #F5F5F5;
+$light: #e0dec9;
+$tan: #a0c2c3;
+$pink: #aad9c3;
+$rose: #adba7e;
+$dark: #4e4e4e;
+$border:1px solid gainsboro;
+
+$font-tamanio-botones:12px;
+$color-primary: #505e47;
+$color-secondary: #a6a6a6;
+$color-highlight: #3f8cff;
+$color-fondo:rgb(226, 224, 197);
+
+* {
+  font-size: 14px;
+  font-family: $font, sans-serif;
+}
+
+h1{
+    font-size: 1.4rem;
+    color: $dark;
+    padding: 10px 0px 0px 0px;
+    display: block;
+    font-weight: 500;
+    text-transform: uppercase;
+ }
+
+ h2{
+  font-size: 1.1rem;
+  color: $color-primary;
+  font-weight: bold;
+  letter-spacing: 0.1pc;
+}
+
+h3 {
+	font-size: 1.3em;
+}
+
+h4 {
+	font-size: 1em;
+}
+
+p{
+	margin: 0%;
+  overflow-wrap: break-word;
+}
+.p-fondo{
+  font-size: 1.8rem;
+  color: $white;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+
+span{
+  font-size: 1.8rem;
+  color: $white;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+form {
+      label{
+        font-size: 0.8rem;
+  }
+}
+
+.tituloTarjeta {
+  margin-top: 15%;
+   color: $tan;
+   display: block;
+   font-size: 1rem;
+   text-transform: uppercase;
+ }
+
+ .subTituloTarjeta {
+   margin:0%;
+   color: $dark;
+   display: block;
+   font-size: 1.2rem;
+   text-transform: lowercase;
+ }
+
+ .pTarjeta {
+   margin:0%;
+   width: auto;
+   display: block;
+   font-size: 0.7rem;
+   font-weight: 500;
+   letter-spacing: 1px;
+   text-overflow: clip;
+ }
+ 
+ .buttons{
+    display: flex;
+    flex-direction: row;
+    button {
+      font-size: 0.8rem;
+    padding: 3%;
+    display: inline-block;
+    outline: 0;
+    border: 0;
+    border-radius: 5px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color:$color-highlight;
+    cursor: pointer;
+    margin: 0px 2px 0px 1px !important;
+  }
+  button:hover{
+    background-color: rgb(248, 239, 239);
+
+  }
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 764px) {
+  .tituloTarjeta {
+    margin-top: 15%;
+     color: $tan;
+     display: block;
+     font-size: 1rem;
+     text-transform: uppercase;
+   }
+  
+   .subTituloTarjeta {
+     margin:0%;
+     color: $dark;
+     display: block;
+     font-size: 1.8rem;
+     text-transform: lowercase;
+   }
+  
+   .pTarjeta {
+     margin:0%;
+     width: auto;
+     display: block;
+     font-size: 1.2rem;
+     font-weight: 500;
+     letter-spacing: 1px;
+     text-overflow: clip;
+   }
+}
+@media only screen and (max-width: 764px) and (min-width: 300px) {
+  .tituloTarjeta {
+    margin-top: 15%;
+     color: $tan;
+     display: block;
+     font-size: 1.4rem;
+     text-transform: uppercase;
+   }
+  
+   .subTituloTarjeta {
+     margin:0%;
+     color: $dark;
+     display: block;
+     font-size: 1.8rem;
+     text-transform: lowercase;
+   }
+  
+   .pTarjeta {
+     margin:0%;
+     width: auto;
+     display: block;
+     font-size: 1.2rem;
+     font-weight: 500;
+     letter-spacing: 1px;
+     text-overflow: clip;
+   }
+}
+/* Smartphones (portrait and landscape) ----------- */  
+// @media only screen  
+// and (min-width : 320px)  
+// and (max-width : 480px) {  
+  // /* Styles */  
+//     } 
+// }  
+// /* Smartphones (landscape) ----------- */  
+// @media only screen  
+// and (min-width : 321px) {  
+// /* Styles */  
+// }  
+// /* Smartphones (portrait) ----------- */  
+// @media only screen  
+// and (max-width : 320px) {  
+// /* Styles */  
+// }  
+/* iPads (portrait and landscape) ----------- */  
+// @media only screen  
+// and (min-width : 768px)  
+// and (max-width : 1024px) {  
+// /* Styles */  
+// }  
+// /* iPads (landscape) ----------- */  
+// @media only screen  
+// and (min-width : 768px)  
+// and (max-width : 1024px)  
+// and (orientation : landscape) {  
+// /* Styles */  
+// }  
+// /* iPads (portrait) ----------- */  
+// @media only screen  
+// and (min-width : 768px)  
+// and (max-width : 1024px)  
+// and (orientation : portrait) {  
+// /* Styles */  
+// }  
+// /* Desktops and laptops ----------- */  
+// @media only screen  
+// and (min-width : 1224px) {  
+// /* Styles */  
+// }  
+// /* Large screens ----------- */  
+// @media only screen  
+// and (min-width : 1824px) {  
+// /* Styles */  
+// }  
+// /* iPhone 4 ----------- */  
+// @media  
+// only screen and (-webkit-min-device-pixel-ratio : 1.5),  
+// only screen and (min-device-pixel-ratio : 1.5) {  
+// /* Styles */  
+// } 

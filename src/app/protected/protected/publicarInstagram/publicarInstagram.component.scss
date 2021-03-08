@@ -1,0 +1,254 @@
+@import '../../../styles/tipografias.scss';
+
+* {
+	font-family: "Raleway", sans-serif;
+}
+
+#screen:hover{
+cursor: pointer;
+}
+
+div .foto{
+	margin-top: 1%;
+}
+/* ----- HORIZONTAL ------------------------------------------------------------------------ */
+.product {
+	padding: 20px;
+
+	width: 432px;
+	height: 540px !important;
+	margin: auto;
+	display: grid;
+	display: block;
+	background-color: whitesmoke;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25%;
+}
+
+.fotoT {
+	max-width: 100%;
+	min-width: 100%;
+
+	border-bottom-left-radius: 20px;
+	border-bottom-right-radius: 20px;
+
+	img{
+		width: 100%;
+	}
+}
+
+/* ----- Informations Section ----- */
+
+.product__info {
+	margin-left: 7%;
+	height: auto;
+	padding: 2% !important;
+	.segundoEnLinea{
+		display: flex;
+		flex-direction: row;
+		justify-content: space-between;
+		h4{
+			color: white !important;
+		}
+		i{
+			color: honeydew;
+		}
+	}
+	
+	div .tercero{
+		margin: 5% 0% 5% 5%;
+		.subtitulo {
+			width: auto;
+			h1 {
+				color: gray;
+				font-weight: 900;
+				text-transform: uppercase;
+			}
+		
+			span {
+				color: $color-secondary;
+				margin: 0%;
+			}
+		}
+		
+		.titulo {
+			box-sizing: content-box;
+			width: auto;
+			margin: 0rem 0rem 0rem 0rem ;
+			color: $color-highlight;
+		}
+		.description {
+			width: auto;
+		}
+	}
+
+	.logo{
+		position: relative;
+		bottom: 2px;
+		width: 20%;
+		margin:17% 2% 2% 2%;
+		 h4{
+			color: white !important;
+		}
+		i{
+			color: honeydew;
+		}
+	
+		.img {
+			margin-top: 5%;
+			background-color: white;
+			width: 40px;
+			height: 40px;
+			border-radius: 100%;
+	
+			img{
+				width: 60%;
+				margin-left: 18%;
+				margin-top: 13%;
+				background-color: none;
+				opacity: 60%;
+				
+			}
+		}
+	}
+}
+
+
+/* ----- VERTICAL --------------------------------------------------------------------------- */
+
+.product_VERTICAL {
+	width: 432px;
+	height: 226px !important;
+	margin: auto;
+	padding: 2px;
+	display: flex;
+	flex-direction: row !important;
+	background-color: white;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25%;
+
+
+.product__photo_VERTICAL{
+	height: 90%;
+	.fotoT_VERTICAL {
+		margin: 5% 5% 5% 5%;
+		max-height: 80%;
+		border-top-left-radius: 40px ;
+		border-top-right-radius: 40px ;
+		border-bottom-right-radius: 40px ;
+		// filter: saturate(150%) contrast(120%) hue-rotate(10deg)
+		// 	drop-shadow(1px 20px 10px rgba(0, 0, 0, 0.3));	
+		img{
+			height: 100%;
+		}
+	}
+
+	div .product__info_VERTICAL {
+		
+		.segundoEnLinea_VERTICAL{
+			font-size: 12px;
+		}
+		padding: 20px !important;
+		width: 200px;
+		}
+		.tercero_VERTICAL{
+			margin: 5% 0% 5% 20%;
+			.subtitulo_VERTICAL {
+				h1 {
+					font-size: 15px;
+					color: gray;
+					font-weight: 900;
+					text-transform: uppercase;
+				}
+			}
+			
+			.titulo_VERTICAL {
+				span {
+					color: $color-secondary;
+					margin: 0%;
+				}
+				width: auto;
+				margin: 0rem 0rem 0rem 0rem ;
+				color: $color-highlight;
+			}
+			.description_VERTICAL {
+				width: auto;	
+			}
+			
+		}	
+	}
+	
+	.logo_VERTICAL{
+		width: auto;
+		display: block;
+		justify-content: start;
+		justify-content: space-around;
+		margin: auto;
+		 h4{
+			color: white !important;
+		}
+		i{
+			color: honeydew;
+		}
+	
+		.img_VERTICAL {
+			margin-top: 2%;
+			background-color: white;
+			width: 50px;
+			height: 50px;
+			border-radius: 100%;
+	
+			img{
+				width: 65%;
+				margin-left: 18%;
+				margin-top: 13%;
+				background-color: none;
+				opacity: 60%;
+				
+			}
+		}
+ 	}
+}
+/* ----- CUADRADO --------------------------------------------------------------------------- */
+
+.product_CUADRADO {
+	width: 382px;
+	height: 382px !important;
+	margin: auto;
+	background-color: white;
+	border-bottom-left-radius: 25px;
+	border-bottom-right-radius: 25%;
+
+	.img img{
+		height: 20px;
+	}
+	.product__photo_CUADRADO{
+		padding: 5px;
+		margin:auto;
+		width: 70%;
+		.fotoT_CUADRADO {
+			max-height: 200px;
+			max-width: 300px;
+			margin-top: 5%;
+			border-top-left-radius: 20px;
+			border-top-right-radius: 20px;
+			border-bottom-right-radius: 70px;
+		
+			img{
+				width: 100%;
+			}
+		}
+
+		.logo_CUADRADO{
+			padding: 10% 10% 10% 10%;
+			height: auto;
+		}
+	}
+
+	.product__info_CUADRADO {
+		margin-left: 10%;
+		width: 50%;
+
+		}	
+	
+}

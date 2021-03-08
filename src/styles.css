@@ -1,0 +1,161 @@
+/* You can add global styles to this file, and also import other style files */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@500&display=swap");
+* {
+  font-size: 14px;
+  font-family: "Open+Sans", sans-serif, sans-serif;
+}
+
+h1 {
+  font-size: 1.4rem;
+  color: #4e4e4e;
+  padding: 10px 0px 0px 0px;
+  display: block;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1rem;
+  color: #4e4e4e;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 1.3em;
+  letter-spacing: 1.2px;
+}
+
+h4 {
+  font-size: 1em;
+  letter-spacing: 1.2px;
+}
+
+p {
+  margin: 0%;
+  overflow-wrap: break-word;
+}
+
+span {
+  font-size: 2.3rem;
+  color: #4e4e4e;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+form label {
+  font-size: 0.8rem;
+}
+
+.tituloTarjeta {
+  margin-top: 15%;
+  color: #a0c2c3;
+  display: block;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.subTituloTarjeta {
+  margin: 0%;
+  color: #4e4e4e;
+  display: block;
+  font-size: 1.2rem;
+  text-transform: lowercase;
+}
+
+.pTarjeta {
+  margin: 0%;
+  width: auto;
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-overflow: clip;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.buttons button {
+  font-size: 0.8rem;
+  padding: 3%;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #3f8cff;
+  cursor: pointer;
+  margin: 0px 2px 0px 1px !important;
+}
+
+.buttons button:hover {
+  background-color: #f8efef;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 764px) {
+  .tituloTarjeta {
+    margin-top: 15%;
+    color: #a0c2c3;
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  .subTituloTarjeta {
+    margin: 0%;
+    color: #4e4e4e;
+    display: block;
+    font-size: 1.8rem;
+    text-transform: lowercase;
+  }
+  .pTarjeta {
+    margin: 0%;
+    width: auto;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-overflow: clip;
+  }
+}
+
+@media only screen and (max-width: 764px) and (min-width: 300px) {
+  .tituloTarjeta {
+    margin-top: 15%;
+    color: #a0c2c3;
+    display: block;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+  .subTituloTarjeta {
+    margin: 0%;
+    color: #4e4e4e;
+    display: block;
+    font-size: 1.8rem;
+    text-transform: lowercase;
+  }
+  .pTarjeta {
+    margin: 0%;
+    width: auto;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-overflow: clip;
+  }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+/* iPads (portrait and landscape) ----------- */
+body {
+  background-color: gainsboro;
+}
+/*# sourceMappingURL=styles.css.map */

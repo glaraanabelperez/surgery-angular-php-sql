@@ -1,0 +1,29 @@
+      <div class="card">
+        <a (click)="redireccion()"><i class="fa fa-window-close" aria-hidden="true" ></i></a>
+        <div class="card-text">
+          <div class="title-total"> 
+            <div>{{mensaje}}</div>
+            <div class="list-card" *ngFor="let p of pedidosTodos let i = index " >
+              <div class="info-derecha">
+                <div class="info">
+                  <p style="color: deeppink; font-weight: bold;">Producto:</p>
+                  <p >{{p.categoria}}</p>
+                  <h3>{{p.titulo}}</h3>
+                  <p> $precio </p>
+                  <p>Cantidad: {{p.cantidad}}</p>
+                </div>
+                <div class="list-card-botones" >
+                  <button class="botonAdd" (click)="eliminar(i)">
+                    <i class="fa fa-trash" aria-hidden="true"></i>
+                  </button>
+                  <hr>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a href="" style="margin: auto;">
+          <i class="fa fa-whatsapp" style="font-size: 20px;" aria-hidden="true"></i>
+        </a>
+      
+      </div>

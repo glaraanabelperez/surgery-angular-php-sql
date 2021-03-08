@@ -1,0 +1,95 @@
+<main class="jumbotron">
+  <div></div>
+    <div class="conteiner2">
+        <div class="card">
+            <div class="card-body">
+                  <h1>Cargar Producto</h1>
+              <hr>
+  
+              <form [formGroup]="uploadForm" #form>
+  
+                <div class="bloque1">
+            
+                  <div class="form-group col-md-3">
+                    <label for="categorias">Categoria</label>
+                    <select  class="form-control" formControlName="categorias" [ngClass]="{'is-invalid': submitted && f.categorias.errors}">
+                      <option value="">Seleccionar</option>
+                      <option [value]="c" *ngFor="let c of categoria">{{c}}</option>
+                      <div *ngIf="submitted && f.categorias" class="invalid-feedback">
+                        <div *ngIf="f.categorias.errors.required"> Por favor ingrese datos</div>
+                      </div>
+                    </select>
+                  </div>
+  
+                  <div class="form-group col-md-3">
+                    <label for="estado">Estado</label>
+                    <select formControlName="estado" class="form-control" [ngClass]="{'is-invalid': submitted && f.estado.errors}">
+                      <option value="">Seleccionar</option>
+                      <option  [value]="item" *ngFor="let item of estado" >{{item}}</option>
+                      <div *ngIf="submitted && f.estado.errors" class="invalid-feedback">
+                        <div *ngIf="f.estado.errors.required"> Por favor Selecciones una opcion</div>
+                      </div>
+                    </select>
+                  </div>
+  
+                  <div class="form-group col-md-3">
+                    <label for="titulo">Titulo</label>
+                    <input type="text" class="form-control" placeholder="Campo Obligatorio" 
+                    formControlName="titulo" [ngClass]="{'is-invalid': submitted && f.titulo.errors}" >
+                  </div>
+                  <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">
+                    <div *ngIf="f.titulo.errors.required"> Por favor ingrese datos</div>
+                  </div>
+          
+                  <div class="form-group col-md-3">
+                    <label for="subtitulo">Subtitulo </label>
+                    <input type="text" class="form-control" placeholder="Campo Obligatorio" [value]=""
+                    formControlName="subtitulo" [ngClass]="{'is-invalid': submitted && f.subtitulo.errors}" >
+                  </div>
+                  <div *ngIf="submitted && f.subtitulo.errors" class="invalid-feedback">
+                    <div *ngIf="f.subtitulo.errors.required"> Por favor ingrese datos</div>
+                  </div>
+  
+                </div>
+                 
+                <div class="form-group col-md-12">
+                  <label for="descripcion">Descripcion</label>
+                  <input type="text" class="form-control" placeholder="Campo Obligatorio" [value]=""
+                  formControlName="descripcion" [ngClass]="{'is-invalid': submitted && f.descripcion.errors}" >
+                </div>
+                <div *ngIf="submitted && f.descripcion.errors" class="invalid-feedback">
+                  <div *ngIf="f.descripcion.errors.required"> Por favor ingrese datos</div>
+                </div>
+            
+                <div class="form-colum">
+                  <div class="form-group col-md-12">
+                    <label for="nombreImagen"></label>
+                    <br>
+                    <span style="color:red;" *ngIf="message">{{message}}</span>
+                    <input  #file type="file" accept='image/*' (change)="previsualizarImg(file.files)" />
+                    <img *ngIf="imgURL" [src]="imgURL" height="200" >
+                    <div *ngIf=" imgEditarForm">
+                      <br>
+                      <img height="180" [src]="'assets/' +  imgEditarForm" >
+                    </div>
+                  </div>
+                </div>
+                  <!-- Assign Image Alt -->
+                  <br>
+                  <div class="product-detail2">
+                    <div class="buttons">
+                      <button class="add"><p style="padding-top: 10px;" (click)="onSubmit()" type="submit" >GUARDAR</p></button>
+                      <button class="add"><p style="padding-top: 10px;" (click)="limpiar()">CANCELAR</p></button>
+                    </div>
+                  </div>
+              </form>
+  
+            </div>
+        </div>
+        <br> 
+        <!-- <div>{{ee.titulo}}</div> -->
+        <lista-prod-admin (PasameId)="editarPubliId($event)"></lista-prod-admin>
+
+    </div>
+  </main>
+  

@@ -1,0 +1,37 @@
+<div class="foto">
+	<div style="margin-left: 30%;">
+		<div style="font-size: 25px; display: block; margin: 2% 40% 2% 40%" >
+			<a (click)="redireccion()" style="cursor: pointer;" >
+				<i class="fa fa-window-close" aria-hidden="true" ></i>
+			</a>
+			<a (click)="foto()" style="margin-right: 40px; cursor: pointer;">
+				<i class="fa fa-camera-retro "  aria-hidden="true" ></i>
+			</a>
+		</div>
+		
+	</div>
+			<section #screen  id="screen" class="product_CUADRADO">
+				<div class="img">
+					<img  [src]="'assets/logo.jpg'" >
+				</div>
+				<div class="product__photo_CUADRADO">
+					<img #img  class="fotoT_CUADRADO" [src]="'assets/' + p.nombreImagen" >
+				</div>
+				
+				<div  class="product__info_CUADRADO">
+						<h1>{{p.subtitulo}}</h1>
+						<h2>{{p.titulo}}</h2>
+						<hr>
+						<div class="datos-cuadrado">
+							<p style="margin-right: 20px;"><i class="fa fa-whatsapp fa-1x" aria-hidden="true" ></i> tel</p>
+							<p><i class="fa fa-envelope" aria-hidden="true"></i> email</p>
+						</div>
+				</div>
+			</section>	
+</div>
+	
+<div id="download">
+  <img #canvas>
+  <a #downloadLink></a>
+</div>
+

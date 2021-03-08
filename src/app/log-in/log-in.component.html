@@ -1,0 +1,42 @@
+<div contenedor-log-in>
+
+      <div class="card">
+        <a [routerLink]="['/home']"><i class="fa fa-window-close" aria-hidden="true" ></i></a>
+        <i class="fa fa-user-circle fa-3x" style="color: gainsboro;" aria-hidden="true"></i>
+        <div class="card-text">
+          <div class="title-total"> 
+            <h2 style="margin-top: 20px; margin-bottom: 15px;">Bienvenido</h2>
+            <h3>{{titulo}}</h3>
+
+            <br>
+            <form *ngIf="!authService.getUser()">
+                
+                <div class="form-group mb-8">
+                    <label for="username">User: (type <em>user</em>)</label><br>
+                    <input  name="username" #username >
+                </div>
+                <div class="form-group mb-8">
+                    <label for="password">Pasword: (type <em>Pasword</em>)</label>
+                    <input  type="password" name="password" #password >
+                </div>
+                <div class="actions">
+                <button (click)="login(username.value, password.value)" ><i class="fas fa-share-square"></i></button>
+                     {{mensajerror}}
+                </div>
+            </form>
+            <div class="botonesAdmin" *ngIf="authService.getUser()">
+              <button (click)="logOut()" style="margin-right: 22px;" >
+                <i class="fas fa-share-square" style="color: black;"></i>
+                <p style="color: gray; font-weight: bold;">Salir</p>
+              </button>
+              <button [routerLink]="['/protected']" >
+                <i class="fa fa-archive " style="color: gainsboro;" aria-hidden="true"></i>
+                <p style="color: gray; font-weight: bold;">Panel</p>
+              </button>
+            </div>
+            
+
+          </div>
+        </div>
+      </div>
+</div>

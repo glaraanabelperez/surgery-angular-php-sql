@@ -1,0 +1,40 @@
+<div class="nav">
+    <hr>
+    <div class="scrollmenu">
+        <a routerLink="/home">Home</a>
+        <a href="">Nosotros</a>
+        <a href="">Otra Seccion</a>
+        <a 
+        routerLink="/list-card"
+        (click)="mostrarSubmenuPaginaI()"
+        >
+        Productos 
+        <i class="fa fa-arrow-circle-right" aria-hidden="true"></i>
+        </a>
+        <a href="#contacto">Contacto</a>
+
+    </div>
+    
+    <div *ngIf="mostrar" class="menuPaginaI">
+        <a href="#SubPaginaI-I">Categoria I</a>
+        <a href="#SubPaginaI-II">Categoria II</a>
+        <a href="#SubPaginaI-II">Categoria III</a>
+        <a href="#SubPaginaI-II">Categoria IV</a>
+        <a href="#SubPaginaI-III">Otra...</a>
+
+    </div>
+    
+    <div class="conteiner1">
+        <div class="buttonsLaterales">
+          <button class="fa fa-home" ></button>
+          <button class="fa fa-facebook-square" style="margin-top: 40px;" ></button>
+          <button class="fa fa-instagram" style="margin-top: 10px;"></button>
+          <button class="fa fa-envelope" style="margin-top: 10px;"></button>
+          <button class="fa fa-arrow-circle-up"></button>
+
+        </div>
+    </div>
+    
+</div>
+
+

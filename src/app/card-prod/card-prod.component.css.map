@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "",
+    "sources": [
+        "card-prod.component.scss"
+    ],
+    "names": [],
+    "file": "card-prod.component.css"
+}

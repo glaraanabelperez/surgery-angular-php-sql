@@ -1,0 +1,275 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@500&display=swap");
+* {
+  font-size: 14px;
+  font-family: "Open+Sans", sans-serif, sans-serif;
+}
+
+h1 {
+  font-size: 1.4rem;
+  color: #4e4e4e;
+  padding: 10px 0px 0px 0px;
+  display: block;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-size: 1rem;
+  color: #4e4e4e;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+h3 {
+  font-size: 1.3em;
+  letter-spacing: 1.2px;
+}
+
+h4 {
+  font-size: 1em;
+  letter-spacing: 1.2px;
+}
+
+p {
+  margin: 0%;
+  overflow-wrap: break-word;
+}
+
+span {
+  font-size: 2.3rem;
+  color: #4e4e4e;
+  font-weight: 500;
+  text-transform: uppercase;
+}
+
+form label {
+  font-size: 0.8rem;
+}
+
+.tituloTarjeta {
+  margin-top: 15%;
+  color: #a0c2c3;
+  display: block;
+  font-size: 1rem;
+  text-transform: uppercase;
+}
+
+.subTituloTarjeta {
+  margin: 0%;
+  color: #4e4e4e;
+  display: block;
+  font-size: 1.2rem;
+  text-transform: lowercase;
+}
+
+.pTarjeta {
+  margin: 0%;
+  width: auto;
+  display: block;
+  font-size: 0.7rem;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-overflow: clip;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.buttons button {
+  font-size: 0.8rem;
+  padding: 3%;
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  border-radius: 5px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #3f8cff;
+  cursor: pointer;
+  margin: 0px 2px 0px 1px !important;
+}
+
+.buttons button:hover {
+  background-color: #f8efef;
+}
+
+@media only screen and (max-width: 1024px) and (min-width: 764px) {
+  .tituloTarjeta {
+    margin-top: 15%;
+    color: #a0c2c3;
+    display: block;
+    font-size: 1rem;
+    text-transform: uppercase;
+  }
+  .subTituloTarjeta {
+    margin: 0%;
+    color: #4e4e4e;
+    display: block;
+    font-size: 1.8rem;
+    text-transform: lowercase;
+  }
+  .pTarjeta {
+    margin: 0%;
+    width: auto;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-overflow: clip;
+  }
+}
+
+@media only screen and (max-width: 764px) and (min-width: 300px) {
+  .tituloTarjeta {
+    margin-top: 15%;
+    color: #a0c2c3;
+    display: block;
+    font-size: 1.4rem;
+    text-transform: uppercase;
+  }
+  .subTituloTarjeta {
+    margin: 0%;
+    color: #4e4e4e;
+    display: block;
+    font-size: 1.8rem;
+    text-transform: lowercase;
+  }
+  .pTarjeta {
+    margin: 0%;
+    width: auto;
+    display: block;
+    font-size: 1.2rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    text-overflow: clip;
+  }
+}
+
+/* Smartphones (portrait and landscape) ----------- */
+/* iPads (portrait and landscape) ----------- */
+.fa-window-close {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border: none;
+}
+
+.fa-user-circle {
+  position: absolute;
+  right: 5px;
+  font-size: 50px;
+}
+
+.fa-share-square {
+  font-size: 26px;
+}
+
+.fa-archive {
+  font-size: 30px;
+}
+
+div .card {
+  background: #fff;
+  border-radius: 4px;
+  -webkit-box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+          box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+  width: 30%;
+  border-radius: 25px;
+  margin-left: 50%;
+  margin-top: 4%;
+  margin-bottom: 4%;
+}
+
+.card h2 {
+  width: 100%;
+  padding: 0 1rem;
+}
+
+.card .title {
+  padding: 1rem;
+  text-align: right;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  color: black;
+  font-weight: bold;
+  font-size: 12px;
+}
+
+.card .desc {
+  padding: 0.5rem 1rem;
+  font-size: 12px;
+}
+
+.card .actions {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.title-total {
+  padding: 2.5em 1.5em 1.5em 1.5em;
+}
+
+button {
+  border: none;
+  background: none;
+  font-size: 24px;
+  color: #f1288d;
+  cursor: pointer;
+  -webkit-transition: .5s;
+  transition: .5s;
+}
+
+button:hover {
+  color: #a00872;
+  -webkit-transform: rotate(22deg);
+          transform: rotate(22deg);
+}
+
+.btonesAdmin {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 765px) {
+  div .card {
+    background: #fff;
+    margin: 4% 4% 4% 10%;
+    border-radius: 25px;
+    -webkit-box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+            box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
+    width: 75%;
+  }
+  .fa-user-circle {
+    position: absolute;
+    right: 5px;
+    font-size: 50px;
+  }
+  .fa-share-square {
+    font-size: 26px;
+  }
+  .fa-archive {
+    font-size: 30px;
+  }
+  form input {
+    width: 100%;
+  }
+  .title-total h2 {
+    font-size: 1.4rem !important;
+  }
+}
+/*# sourceMappingURL=ver-pedido.component.css.map */
