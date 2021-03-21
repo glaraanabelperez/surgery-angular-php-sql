@@ -7,8 +7,7 @@
 
     function connect()
     {
-      // $connect = mysqli_connect('localhost','id16137003_octopuslaparo', '!Lara30306[]', 'id16137003_laparo');
-      $connect = mysqli_connect('localhost','root', '', 'laparo');
+      $connect = mysqli_connect();
 
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
