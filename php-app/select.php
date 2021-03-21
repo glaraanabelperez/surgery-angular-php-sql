@@ -7,8 +7,13 @@
     //require("../comun/db.php");
     function connect()
     {
+<<<<<<< HEAD
             // $connect = mysqli_connect('localhost','id16388186_matizprograming', '!Lara30306[jose]', 'id16388186_tienda');
       $connect = mysqli_connect('localhost','root', '', 'tienda');
+=======
+          $connect = mysqli_connect();
+
+>>>>>>> 2954d2251d0487614ffc1d710c11d1c45e1c7acd
 
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
