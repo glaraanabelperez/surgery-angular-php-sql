@@ -7,7 +7,7 @@
 
     function connect()
     {
-      // $connect = mysqli_connect('localhost','id16137003_octopuslaparo', '!Lara30306[]', 'id16137003_laparo');
+      // $connect = mysqli_connect('localhost','id16388186_matizprograming', '!Lara30306[jose]', 'id16388186_tienda');
       $connect = mysqli_connect('localhost','root', '', 'laparo');
 
       if (mysqli_connect_errno($connect)) {

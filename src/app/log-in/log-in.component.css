@@ -1,7 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 * {
   font-size: 14px;
-  font-family: "Open+Sans", sans-serif, sans-serif;
+  font-family: "DM Sans", sans-serif, sans-serif;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.tituloPrincipal {
+  font-size: 3rem;
 }
 
 h1 {
@@ -14,32 +29,37 @@ h1 {
 }
 
 h2 {
-  font-size: 1rem;
-  color: #4e4e4e;
+  font-size: 1.1rem;
+  color: #505e47;
   font-weight: bold;
-  text-transform: uppercase;
+  letter-spacing: 0.1pc;
 }
 
 h3 {
   font-size: 1.3em;
-  letter-spacing: 1.2px;
 }
 
 h4 {
   font-size: 1em;
-  letter-spacing: 1.2px;
 }
 
 p {
-  margin: 0%;
+  margin: 0% !important;
+  width: 100%;
   overflow-wrap: break-word;
 }
 
-span {
-  font-size: 2.3rem;
-  color: #4e4e4e;
+.p-fondo {
+  font-size: 1.8rem;
+  color: #F5F5F5;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+span {
+  font-size: 1.8rem;
+  color: #F5F5F5;
+  font-weight: 500;
 }
 
 form label {
@@ -47,7 +67,7 @@ form label {
 }
 
 .tituloTarjeta {
-  margin-top: 15%;
+  margin-top: 5%;
   color: #a0c2c3;
   display: block;
   font-size: 1rem;
@@ -70,6 +90,11 @@ form label {
   font-weight: 500;
   letter-spacing: 1px;
   text-overflow: clip;
+}
+
+.estiloBotonSimple {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .buttons {
@@ -180,11 +205,11 @@ div .card {
   border-radius: 4px;
   -webkit-box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
           box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-  width: 30%;
+  width: 35%;
   border-radius: 25px;
-  margin-left: 50%;
-  margin-top: 4%;
-  margin-bottom: 4%;
+  margin: auto;
+  margin-top: 10%;
+  margin-bottom: 10%;
 }
 
 .card h2 {
@@ -217,6 +242,11 @@ div .card {
 
 .title-total {
   padding: 2.5em 1.5em 1.5em 1.5em;
+  text-align: center;
+}
+
+.botonesAdmin {
+  text-align: center;
 }
 
 button {
@@ -248,11 +278,12 @@ button:hover {
 @media only screen and (min-width: 320px) and (max-width: 765px) {
   div .card {
     background: #fff;
-    margin: 4% 4% 4% 10%;
+    margin: auto;
     border-radius: 25px;
     -webkit-box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
             box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-    width: 75%;
+    width: 65%;
+    margin-top: 15%;
   }
   .fa-user-circle {
     position: absolute;
@@ -270,6 +301,10 @@ button:hover {
   }
   .title-total h2 {
     font-size: 1.4rem !important;
+    text-align: center;
+  }
+  .botonesAdmin {
+    text-align: center;
   }
 }
 /*# sourceMappingURL=log-in.component.css.map */

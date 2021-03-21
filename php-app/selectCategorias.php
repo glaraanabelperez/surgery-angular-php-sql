@@ -2,12 +2,10 @@
     header('Access-Control-Allow-Origin: *');
     header("Access-Control_Allow-Headers: origin, X-Requested-With,Content-Type, Accept");//le pide acceso al header
     header('Access-Control-Allow-Methods: GET, POST');
-    // $json=file_get_contents('php://input');//recibe el jason de afuera
-    // $params=json_decode($json);//decodifica el json y guarda en params
-    //require("../comun/db.php");
+
     function connect()
     {
-            // $connect = mysqli_connect('localhost','id16388186_matizprograming', '!Lara30306[jose]', 'id16388186_tienda');
+      //$connect = mysqli_connect('localhost','id16388186_matizprograming', '!Lara30306[jose]', 'id16388186_tienda');
       $connect = mysqli_connect('localhost','root', '', 'tienda');
 
       if (mysqli_connect_errno($connect)) {
@@ -17,9 +15,11 @@
       return $connect;
     }
     $co = connect();
-     $respuesta=mysqli_query($co, "SELECT * FROM productos;");
+
+    $sql="SELECT * FROM categorias;";
+    $respuesta=mysqli_query($co, $sql);
     //  $publi = $respuesta->fetchAll(PDO::FETCH_OBJ);
-      // echo json_encode($publi);//muestra el json , el mensaje
+    // echo json_encode($publi);//muestra el json , el mensaje
 
      class Result{}
      $response=new Result();
@@ -35,16 +35,8 @@
           $response->mensaje='MUY BIEN';
           while($fila = mysqli_fetch_array($respuesta)) {
         $array[] = array(
-          "codigo_producto" => $fila['codigo_producto'],
-          "categorias" => $fila['categorias'],
-          "estado" => $fila['estado'],
-          "titulo" => $fila['titulo'],
-          "subtitulo" => $fila['subtitulo'],
+          "codigo_categoria" => $fila['codigo_categoria'],
           "descripcion" => $fila['descripcion'],
-          "nombreImagen" => $fila['nombreImagen'],
-          "fechaAlta" => $fila['fechaAlta'],
-          "fechaBaja" => $fila['fechaBaja'],
-          "precio" => $fila['precio'],
          ); 
         } 
 

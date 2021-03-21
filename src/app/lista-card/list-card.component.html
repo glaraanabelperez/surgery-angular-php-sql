@@ -1,28 +1,32 @@
-
-<div *ngIf="cant>0">
-	<div class="circl"><p>{{cant}}</p></div>
-</div>
-
-<div class="list-card" *ngFor="let p of publicaciones" >
-	<div class="foto">
-		<img class="imgCard" [src]="'assets/' + p.nombreImagen">
-	</div>
-	<div class="info-derecha">
-		<div class="info">
-			<p >{{p.subtitulo}}</p>
-			<h3>{{p.titulo}}</h3>
-			<p style="margin-bottom: 25px;">{{p.descripcion}}</p>
-			<p><i class="fa fa-circle" aria-hidden="true"></i>
-				- $precio</p>
-		</div>
-		<div class="list-card-botones">
-			<button class="botonAdd" (click)="agregarPedido(p)">
-				<i class="fa fa-plus-square" aria-hidden="true"></i>
-			</button>
-			<button class="botonAdd" >VER</button>
-
-		</div>
-	</div>
+<div>
+	<div class="cantidad" [ngStyle]="{'background-color':colorEstado, 'display': ver}" >
+		<i class="fa fa-level-up" aria-hidden="true"></i>
+	</div>	
+	<div class="list-card" *ngFor="let p of publicaciones " >
+		<div class="list-card" *ngIf="p.categorias=== categoriaEstablecida,">
+			<div class="foto">
+				<img class="imgCard" [src]="'assets/' + p.nombreImagen">
+			</div>
+			<div class="info-derecha">
+				<div class="info">
+					<p >{{p.subtitulo}}</p>
+					<h3>{{p.titulo}}</h3>
+					<p style="margin-bottom: 10px;">{{p.descripcion}}</p>
+					<p>codigo: {{p.codigo_producto}}</p>
 	
+					<p><i class="fa fa-circle" aria-hidden="true" style="margin-right: 3px;"></i>${{p.precio}}</p>
+					<div class="list-card-botones">
+						<button class="botonAdd" (click)="agregarPedido(p)">
+							<i class="fa fa-plus-square" aria-hidden="true"></i>
+						</button>
+						<button class="botonAdd" (click)="verCard(p)" [routerLink]="['/list-card']" >VER</button>
+					</div>
+				</div>
+				
+			</div>
+	
+		</div>
+	</div>
 </div>
+
 

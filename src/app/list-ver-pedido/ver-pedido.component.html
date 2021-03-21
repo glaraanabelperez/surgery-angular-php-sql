@@ -1,5 +1,4 @@
       <div class="card">
-        <a (click)="redireccion()"><i class="fa fa-window-close" aria-hidden="true" ></i></a>
         <div class="card-text">
           <div class="title-total"> 
             <div>{{mensaje}}</div>
@@ -22,8 +21,9 @@
             </div>
           </div>
         </div>
-        <a href="" style="margin: auto;">
-          <i class="fa fa-whatsapp" style="font-size: 20px;" aria-hidden="true"></i>
+        <a (click)="finalizarPedido()"
+        href="https://api.whatsapp.com/send?phone=5491144163757&text={{pedido}}" 
+        style="margin: auto;">
+          <i class="fa fa-whatsapp" style="font-size: 30px;" aria-hidden="true"></i>
         </a>
-      
       </div>

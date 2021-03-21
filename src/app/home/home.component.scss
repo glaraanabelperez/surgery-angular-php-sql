@@ -1,3 +1,5 @@
+@import '../styles/tipografias.scss';
+
   $white: #f5f5f5;
   $blue: #03acac;
   $amarillo:rgba(169, 214, 43, 0.822);
@@ -7,28 +9,31 @@
   
   .conteinerHome{
     padding: 5%;
+    margin-right: 5%;
+    justify-content: center;
+    .container{
+      margin-top: 5%;
+      text-align: center;
+    }
   }
 
   .introduccion{
-    h1{
-      span{
-        background-color: $blue;
-        font-size: 50px;
-        line-height: normal;
-      }
-    }
-    margin-top: 2%;
-    margin-left: 3%;
-    width: 25%;
+    text-align: center;
+    width: 100%;
   }
 
-  .parte1{
+  div .parte1{
     display: flex;
     flex-direction: row;
-    margin: 1%;
+    justify-content: center;
   }
 
-  @media screen and (min-width: 300px) and (max-width: 821px) {
+  .event_item{
+    text-align: left;
+    border: 1px solid $color-gris;
+  }
+
+  @media screen and (min-width: 300px) and (max-width: 760px) {
   
     .parte1{
       display: flex;
@@ -69,7 +74,6 @@ body{
 
 .t{
   box-shadow: 0px 0px 35px -16px rgba(0,0,0,0.75);
-  font-family: 'Roboto', sans-serif;
   padding: 20px 30px;
   color:#363b41;
   display: inline-block;
@@ -81,7 +85,7 @@ body{
 
 .header_copy{
   color:$light_grey;
-  font-size:20px;
+  font-size:2rem;
 }
 ._plan{
   margin:20px 0 40px;
@@ -96,7 +100,7 @@ body{
 }
 
 .cl_copy{
-  font-size:20px;
+  font-size:2rem;
   margin: 20px 0;
   display: inline-block;
 }
@@ -115,13 +119,11 @@ body{
 ._events{
   color:$light_grey;
 }
-.ce_title{
-  font-size:14px;
-}
 
 .event_item{
-  margin: 18px 0;
-  padding:5px;
+  margin: 30px 0;
+  padding:10px;
+  background-color: $color-gris-claro;
   cursor: pointer;
   &:hover{
     background-image: linear-gradient(-222deg, #FF8494, #ffa9b7);
@@ -147,7 +149,7 @@ body{
   box-shadow: 0px 0px 52px -18px rgba(0, 0, 0, 0.75);
 }
 .dot_active{
-  background-color: #FF8494;
+  background-color: #02ee94;
 }
 
 .ei_Title{

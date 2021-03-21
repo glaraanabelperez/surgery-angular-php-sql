@@ -1,34 +1,47 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { RouterModule, Routes } from '@angular/router';
+
+import { ServiceCategoriasEstado } from './protected/servicios-categorias-estados/service-categroias-estado.service';
+import { ServiceGeneral } from './servicios-generales/service-general.service';
+import { ServicePedidos } from './servicios-pedidos/service-pedidos.service';
+import { ApiDatos } from './models/api-datos.model';
+
+import { AuthService } from './auth-services/auth.service';
+import { GuardsGuard } from './guards/usuario-logueado/guards.guard';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent} from './nav/nav.component';
 import { CabeceraComponent} from './cabecera/cabecera.component';
 import { ListCardComponent} from './lista-card/list-card.component';
+import { CardProdComponent} from './card-prod/card-prod.component';
+
 import { HomeComponent } from './home/home.component';
 
-import { ServiceCategorias } from './protected/servicios-categorias/service-categroias.service';
-import { ServiceGeneral } from './servicios-generales/service-general.service';
-import { HttpClientModule } from '@angular/common/http';
 import { LogInComponent } from './log-in/log-in.component';
 import { ProtectedComponent } from './protected/protected/protected.component';
-import { AuthService } from './auth-services/auth.service';
-import { RouterModule, Routes } from '@angular/router';
-import { GuardsGuard } from './guards/usuario-logueado/guards.guard';
+
 import { ListaProdAdmin } from './protected/protected/productos-panel/lista-prod-admin';
 import { PublicarInstagram } from './protected/protected/publicarInstagram/publicarInstagram.component';
-import { ServicePedidos } from './servicios-pedidos/service-pedidos.service';
 import { VerPedido } from './list-ver-pedido/ver-pedido.component';
+import { NavSecundario } from './nav-secundario/nav-secundario';
+
+export class ObjetoCategoria{
+  subscribe(arg0: (categoriaRecibida: any) => any) {
+    throw new Error('Method not implemented.');
+  }
+}
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'list-card', component: ListCardComponent},
+  {path: 'card', component: ListCardComponent},
   {path: 'login', component:LogInComponent},
-  {path: 'pedidos', component:VerPedido},
-
+  // {path: 'list-card/:parametro', component: ListCardComponent },
 
   {
     path: 'protected',
@@ -47,13 +60,15 @@ const routes: Routes = [
   declarations: [
     AppComponent,
     NavComponent,
+    NavSecundario,
     CabeceraComponent,
     ListCardComponent,
     LogInComponent,
     ProtectedComponent,
     ListaProdAdmin,
     PublicarInstagram,
-    VerPedido
+    VerPedido,
+    CardProdComponent
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -64,7 +79,17 @@ const routes: Routes = [
     ReactiveFormsModule,
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ],
-  providers: [ServiceGeneral, AuthService, GuardsGuard, ServiceCategorias, ServicePedidos],
+  providers: [
+    ServiceGeneral, 
+    AuthService, 
+    GuardsGuard, 
+    ServiceCategoriasEstado, 
+    ServicePedidos,
+    ApiDatos ,
+    {provide: ObjetoCategoria}
+    // {provide: MyFourthClass, useFactory: ...},
+    //aca es una prueba rara
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

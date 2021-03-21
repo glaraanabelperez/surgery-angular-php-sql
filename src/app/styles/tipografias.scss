@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@500&display=swap');
-
-$font: 'Open+Sans', sans-serif;
-$font-tamanio-botones:12px;
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans&display=swap');
+$font: 'DM Sans', sans-serif;
+$font-tamanio-botones:14px;
 $color-gris:gainsboro;
 $color-gris-claro:rgb(239, 240, 238);
 $color-amarillo:#f8e964;
@@ -25,6 +25,15 @@ $color-fondo:rgb(226, 224, 197);
   font-family: $font, sans-serif;
 }
 
+.row{
+  display: flex;
+  flex-direction: row;
+}
+
+.tituloPrincipal{
+  font-size: 3rem;
+
+}
 h1{
     font-size: 1.4rem;
     color: $dark;
@@ -50,7 +59,8 @@ h4 {
 }
 
 p{
-	margin: 0%;
+	margin: 0% !important;
+  width: 100%;
   overflow-wrap: break-word;
 }
 .p-fondo{
@@ -65,7 +75,6 @@ span{
   font-size: 1.8rem;
   color: $white;
   font-weight: 500;
-  text-transform: uppercase;
 }
 
 form {
@@ -75,7 +84,7 @@ form {
 }
 
 .tituloTarjeta {
-  margin-top: 15%;
+  margin-top: 5%;
    color: $tan;
    display: block;
    font-size: 1rem;
@@ -98,6 +107,11 @@ form {
    font-weight: 500;
    letter-spacing: 1px;
    text-overflow: clip;
+ }
+ .estiloBotonSimple{
+   font-size: 1rem;
+  //  text-transform: uppercase;
+   font-weight: bold;
  }
  
  .buttons{

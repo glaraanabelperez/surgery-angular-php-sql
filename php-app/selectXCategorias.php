@@ -2,9 +2,11 @@
     header('Access-Control-Allow-Origin: *');
     header("Access-Control_Allow-Headers: origin, X-Requested-With,Content-Type, Accept");//le pide acceso al header
     header('Access-Control-Allow-Methods: GET, POST');
-    // $json=file_get_contents('php://input');//recibe el jason de afuera
-    // $params=json_decode($json);//decodifica el json y guarda en params
-    //require("../comun/db.php");
+  
+    
+    $dato=file_get_contents('php://input');//recibe el jason de afuera
+    $params=json_decode($json);//decodifica el json y guarda en params
+
     function connect()
     {
             // $connect = mysqli_connect('localhost','id16388186_matizprograming', '!Lara30306[jose]', 'id16388186_tienda');
@@ -17,9 +19,8 @@
       return $connect;
     }
     $co = connect();
-     $respuesta=mysqli_query($co, "SELECT * FROM productos;");
-    //  $publi = $respuesta->fetchAll(PDO::FETCH_OBJ);
-      // echo json_encode($publi);//muestra el json , el mensaje
+    $sql="SELECT * FROM `productos` WHERE (`categorias` = '2');";
+    $respuesta=mysqli_query($co, $sql);
 
      class Result{}
      $response=new Result();
@@ -34,18 +35,18 @@
           $response->resultado='OK';
           $response->mensaje='MUY BIEN';
           while($fila = mysqli_fetch_array($respuesta)) {
-        $array[] = array(
-          "codigo_producto" => $fila['codigo_producto'],
-          "categorias" => $fila['categorias'],
-          "estado" => $fila['estado'],
-          "titulo" => $fila['titulo'],
-          "subtitulo" => $fila['subtitulo'],
-          "descripcion" => $fila['descripcion'],
-          "nombreImagen" => $fila['nombreImagen'],
-          "fechaAlta" => $fila['fechaAlta'],
-          "fechaBaja" => $fila['fechaBaja'],
-          "precio" => $fila['precio'],
-         ); 
+            $array[] = array(
+              "codigo_producto" => $fila['codigo_producto'],
+              "categorias" => $fila['categorias'],
+              "estado" => $fila['estado'],
+              "titulo" => $fila['titulo'],
+              "subtitulo" => $fila['subtitulo'],
+              "descripcion" => $fila['descripcion'],
+              "nombreImagen" => $fila['nombreImagen'],
+              "fechaAlta" => $fila['fechaAlta'],
+              "fechaBaja" => $fila['fechaBaja'],
+              "precio" => $fila['precio'],
+             ); 
         } 
 
       }else{
@@ -55,4 +56,4 @@
 
       header('Content-Type: application/json');
       echo json_encode($array);//muestra el json , el mensaje
-?>
+?>;

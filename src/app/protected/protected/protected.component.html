@@ -14,7 +14,7 @@
                     <label for="categorias">Categoria</label>
                     <select  class="form-control" formControlName="categorias" [ngClass]="{'is-invalid': submitted && f.categorias.errors}">
                       <option value="">Seleccionar</option>
-                      <option [value]="c" *ngFor="let c of categoria">{{c}}</option>
+                      <option [value]="c.codigo_categorias"  *ngFor="let c of categorias">{{c.descripcion}}</option>
                       <div *ngIf="submitted && f.categorias" class="invalid-feedback">
                         <div *ngIf="f.categorias.errors.required"> Por favor ingrese datos</div>
                       </div>
@@ -73,6 +73,12 @@
                       <img height="180" [src]="'assets/' +  imgEditarForm" >
                     </div>
                   </div>
+                </div>
+
+                <div class="form-group col-md-3">
+                  <label for="subtitulo">Precio</label>
+                  <input type="text" class="form-control" [value]=""
+                  formControlName="precio"  >
                 </div>
                   <!-- Assign Image Alt -->
                   <br>

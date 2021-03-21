@@ -1,7 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 * {
   font-size: 14px;
-  font-family: "Open+Sans", sans-serif, sans-serif;
+  font-family: "DM Sans", sans-serif, sans-serif;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.tituloPrincipal {
+  font-size: 3rem;
 }
 
 h1 {
@@ -14,32 +29,37 @@ h1 {
 }
 
 h2 {
-  font-size: 1rem;
-  color: #4e4e4e;
+  font-size: 1.1rem;
+  color: #505e47;
   font-weight: bold;
-  text-transform: uppercase;
+  letter-spacing: 0.1pc;
 }
 
 h3 {
   font-size: 1.3em;
-  letter-spacing: 1.2px;
 }
 
 h4 {
   font-size: 1em;
-  letter-spacing: 1.2px;
 }
 
 p {
-  margin: 0%;
+  margin: 0% !important;
+  width: 100%;
   overflow-wrap: break-word;
 }
 
-span {
-  font-size: 2.3rem;
-  color: #4e4e4e;
+.p-fondo {
+  font-size: 1.8rem;
+  color: #F5F5F5;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+span {
+  font-size: 1.8rem;
+  color: #F5F5F5;
+  font-weight: 500;
 }
 
 form label {
@@ -47,7 +67,7 @@ form label {
 }
 
 .tituloTarjeta {
-  margin-top: 15%;
+  margin-top: 5%;
   color: #a0c2c3;
   display: block;
   font-size: 1rem;
@@ -70,6 +90,11 @@ form label {
   font-weight: 500;
   letter-spacing: 1px;
   text-overflow: clip;
+}
+
+.estiloBotonSimple {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .buttons {
@@ -154,25 +179,26 @@ form label {
 
 /* Smartphones (portrait and landscape) ----------- */
 /* iPads (portrait and landscape) ----------- */
-.circl {
-  width: 22px;
-  height: 22px;
-  border-radius: 100%;
-  background-color: white;
-  position: absolute;
-  top: 3%;
-  right: 20%;
-  border: 1px solid black;
+.cantidad {
+  position: fixed;
+  right: 48px;
+  top: 470px;
+  height: 30px;
+  width: 30px;
+  border-radius: 5px;
+  text-align: center;
+  padding: 1%;
 }
 
-.circl p {
-  margin-left: 5px;
+.cantidad .fa-hand-pointer-o {
+  font-size: 20px;
+  color: white;
 }
 
 .list-card {
   background-color: #eff0ee;
   border: 1px solid gainsboro;
-  width: 80%;
+  width: 90%;
   -webkit-box-sizing: content-box;
           box-sizing: content-box;
   display: -webkit-box;
@@ -186,11 +212,13 @@ form label {
 }
 
 .list-card .foto {
-  width: 25%;
+  width: 75%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 .list-card .foto .imgCard {
-  margin: 10%;
+  padding: 10%;
   width: 100%;
   border-bottom-left-radius: 20px;
   border-top-right-radius: 20px;
@@ -198,19 +226,7 @@ form label {
 
 .list-card .info-derecha {
   width: 100%;
-  margin-left: 5%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.list-card .info-derecha .info {
-  margin-top: 1%;
-  width: 80%;
+  margin-left: 7%;
 }
 
 .list-card .info-derecha .list-card-botones {
@@ -221,8 +237,8 @@ form label {
   -webkit-box-direction: normal;
       -ms-flex-direction: row;
           flex-direction: row;
-  -ms-flex-pack: distribute;
-      justify-content: space-around;
+  text-align: right;
+  margin-top: 7%;
 }
 
 .list-card .info-derecha .list-card-botones .botonAdd {
@@ -254,11 +270,15 @@ form label {
     margin: 3% 2% 3% 5%;
   }
   .list-card .foto {
-    width: 25%;
+    width: 75%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
   .list-card .foto .imgCard {
-    margin: 10%;
+    padding: 5%;
     width: 100%;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   .list-card .info-derecha {
     width: 100%;
@@ -274,6 +294,9 @@ form label {
   .list-card .info-derecha .info {
     margin-top: 1%;
     width: 80%;
+  }
+  .list-card .info-derecha .list-card-botones {
+    margin-top: 7%;
   }
   .list-card .info-derecha .list-card-botones .botonAdd {
     padding: 10px;
@@ -292,8 +315,7 @@ form label {
   .list-card {
     background-color: #eff0ee;
     border: 1px solid gainsboro;
-    width: 80%;
-    height: 35%;
+    width: 90%;
     -webkit-box-sizing: content-box;
             box-sizing: content-box;
     display: -webkit-box;
@@ -306,18 +328,19 @@ form label {
     margin: 3% 2% 3% 5%;
   }
   .list-card .foto {
-    width: 15%;
-    height: 100%;
-    background-color: white;
+    width: 75%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
   }
   .list-card .foto .imgCard {
+    padding: 5%;
     width: 100%;
-    height: 100%;
-    background-size: cover;
+    border-bottom-left-radius: 20px;
+    border-top-right-radius: 20px;
   }
   .list-card .info-derecha {
     width: 100%;
-    margin-left: 2%;
+    margin-left: 5%;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -331,15 +354,7 @@ form label {
     width: 80%;
   }
   .list-card .info-derecha .list-card-botones {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: row;
-            flex-direction: row;
-    -ms-flex-pack: distribute;
-        justify-content: space-around;
+    margin-top: 7%;
   }
   .list-card .info-derecha .list-card-botones .botonAdd {
     padding: 10px;
@@ -350,20 +365,5 @@ form label {
     display: block;
     text-align: center;
   }
-}
-
-/* Desktops and laptops ----------- */
-@media only screen and (min-width: 1224px) {
-  /* Styles */
-}
-
-/* Large screens ----------- */
-@media only screen and (min-width: 1824px) {
-  /* Styles */
-}
-
-/* iPhone 4 ----------- */
-@media only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-  /* Styles */
 }
 /*# sourceMappingURL=list-card.component.css.map */

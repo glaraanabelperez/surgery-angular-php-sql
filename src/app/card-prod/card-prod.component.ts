@@ -1,4 +1,6 @@
 import { Component, OnInit} from '@angular/core';
+import { Publicaciones } from '../models/publicaciones';
+import { ServiceGeneral } from '../servicios-generales/service-general.service';
 
 
 
@@ -8,11 +10,15 @@ import { Component, OnInit} from '@angular/core';
     styleUrls: ['./card-prod.component.scss']
   })
   export class CardProdComponent implements OnInit {
+    p:Publicaciones;
 
-    constructor() {
+    constructor(private serviceG:ServiceGeneral) {
+      this.p=this.serviceG.getVisualizarCard();
+      console.log("acacaca card", this.serviceG.getVisualizarCard())
      }
      
-    ngOnInit(): void {}
+    ngOnInit(): void {
+    }
   
 }
   

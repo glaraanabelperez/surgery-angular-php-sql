@@ -1,48 +1,45 @@
 @import '../styles/tipografias.scss';
-.circl{
-	width: 22px;
-	height: 22px;
-	border-radius: 100%;
-	background-color: white;
-	position: absolute;
-	top: 3%;
-	right: 20%;
-	border:1px solid black;
-	p{
-		margin-left: 5px;
+.cantidad{
+	position: fixed;
+	right: 48px;
+	top: 470px;
+	height: 30px;
+	width: 30px;
+	border-radius: 5px;
+	text-align: center;
+	padding:1%;
+	.fa-hand-pointer-o{
+		font-size: 20px;
+		color: white;
 	}
 }
 .list-card{
 	background-color: $color-gris-claro;
 	border: $border;
-	width: 80%;
+	width: 90%;
 	box-sizing: content-box;
 	display: flex;
 	flex-direction: row;
 	margin: 3% 2% 3% 5%;
 	.foto{
-		width: 25%;
+		width: 75%;
+		box-sizing: border-box;
 		.imgCard{
-			margin: 10%;
+			padding: 10%;
 			width: 100%;
 			border-bottom-left-radius: 20px;
 			border-top-right-radius: 20px;
-	
 		}
 	}
 	.info-derecha{
 		width: 100%;
-		margin-left: 5%;
-		display: flex;
-		flex-direction: row;
-		.info{
-			margin-top: 1%;
-			width: 80%;
-		}
+		margin-left: 7%;
+	
 		.list-card-botones{
 			display: flex;
 			flex-direction: row;
-			justify-content: space-around;
+			text-align: right;
+			margin-top: 7%;
 			.botonAdd{
 				padding: 10px;
 				height: 100%;
@@ -70,11 +67,13 @@ and (max-width : 480px) {
 	flex-direction: row;
 	margin: 3% 2% 3% 5%;
 	.foto{
-		width: 25%;
+		width: 75%;
+		box-sizing: border-box;
 		.imgCard{
-			margin: 10%;
+			padding: 5%;
 			width: 100%;
-			
+			border-bottom-left-radius: 20px;
+			border-top-right-radius: 20px;
 		}
 	}
 	.info-derecha{
@@ -87,7 +86,8 @@ and (max-width : 480px) {
 			width: 80%;
 		}
 		.list-card-botones{
-			
+			margin-top: 7%;
+
 			.botonAdd{
 				padding: 10px;
 				height: 100%;
@@ -101,6 +101,7 @@ and (max-width : 480px) {
 	}
 }
 }  
+
  
 /* iPads (portrait and landscape) ----------- */  
 @media only screen  
@@ -111,26 +112,24 @@ and (max-width : 1024px) {
 .list-card{
 	background-color: $color-gris-claro;
 	border: $border;
-	width: 80%;
-	height: 35%;
+	width: 90%;
 	box-sizing: content-box;
 	display: flex;
 	flex-direction: row;
 	margin: 3% 2% 3% 5%;
 	.foto{
-		width: 15%;
-		height: 100%;
-		background-color: white;
+		width: 75%;
+		box-sizing: border-box;
 		.imgCard{
+			padding: 5%;
 			width: 100%;
-			height: 100%;
-			background-size: cover;
-			
+			border-bottom-left-radius: 20px;
+			border-top-right-radius: 20px;
 		}
 	}
 	.info-derecha{
 		width: 100%;
-		margin-left: 2%;
+		margin-left: 5%;
 		display: flex;
 		flex-direction: row;
 		.info{
@@ -138,9 +137,8 @@ and (max-width : 1024px) {
 			width: 80%;
 		}
 		.list-card-botones{
-			display: flex;
-			flex-direction: row;
-			justify-content: space-around;
+			margin-top: 7%;
+
 			.botonAdd{
 				padding: 10px;
 				height: 100%;
@@ -152,22 +150,5 @@ and (max-width : 1024px) {
 			}
 		};
 	}
-}
-
+ }
 }  
-/* Desktops and laptops ----------- */  
-@media only screen  
-and (min-width : 1224px) {  
-/* Styles */  
-}  
-/* Large screens ----------- */  
-@media only screen  
-and (min-width : 1824px) {  
-/* Styles */  
-}  
-/* iPhone 4 ----------- */  
-@media  
-only screen and (-webkit-min-device-pixel-ratio : 1.5),  
-only screen and (min-device-pixel-ratio : 1.5) {  
-/* Styles */  
-} 

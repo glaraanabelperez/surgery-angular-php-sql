@@ -8,8 +8,8 @@
 
     function connect()
     {
-      $connect = mysqli_connect('localhost','root', '', 'laparo');
-      // $connect = mysqli_connect('localhost','id16137003_octopuslaparo', '!Lara30306[]', 'id16137003_laparo');
+      $connect = mysqli_connect('localhost','root', '', 'tienda');
+      // $connect = mysqli_connect('localhost','id16388186_matizprograming', '!Lara30306[jose]', 'id16388186_tienda');
 
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
@@ -17,12 +17,13 @@
       mysqli_set_charset($connect, "utf8");
       return $connect;
     }
-
+    
     $co = connect();
-     $respuesta=mysqli_query($co, "INSERT INTO publicaciones(fecha, categoria, titulo, subtitulo, 
-     descripcion, avatar, nombreImagen, estado) VALUES('$params->fecha', '$params->categoria', 
+     $respuesta=mysqli_query($co, "INSERT INTO productos( categorias, estado, titulo, subtitulo, 
+     descripcion,  nombreImagen, fechaAlta, precio) VALUES('$params->categorias', '$params->estado', 
      '$params->titulo','$params->subtitulo', '$params->descripcion', 
-     '$params->avatar','$params->nombreImagen', '$params->estado') ");
+     '$params->nombreImagen','$params->fechaAlta', '$params->precio') ");
+
       class Result{}
       $response=new Result();
      if($respuesta==true){

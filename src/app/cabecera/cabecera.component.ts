@@ -9,6 +9,7 @@ import { Observable, of as observableOf } from 'rxjs'; // since RxJs 6
     styleUrls: ['./cabecera.component.scss']
   })
   export class CabeceraComponent implements OnInit {
+    mostrar=false;
 
     constructor(public authService: AuthService) {
     }
@@ -23,6 +24,7 @@ import { Observable, of as observableOf } from 'rxjs'; // since RxJs 6
         return observableOf(true);
       }
     }
+
 }
   
   

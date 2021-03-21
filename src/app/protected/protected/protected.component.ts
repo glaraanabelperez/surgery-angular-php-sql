@@ -4,7 +4,8 @@ import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { Router } from '@angular/router';
 import { ServiceGeneral } from 'src/app/servicios-generales/service-general.service';
-import {ServiceCategorias} from '../servicios-categorias/service-categroias.service';
+import {ServiceCategoriasEstado} from '../servicios-categorias-estados/service-categroias-estado.service';
+import { Categorias } from 'src/app/models/categorias';
 
 declare var $:any;
 
@@ -18,7 +19,8 @@ declare var $:any;
 export class ProtectedComponent implements OnInit {
 
   uploadForm: FormGroup;
-  categoria: String[]=[];
+  categorias :Categorias[] = [];
+  // categorias: any []=[];
   estado: String[]=[];
   accion:string="nuevo";
   fechaHoy: string;
@@ -29,25 +31,25 @@ export class ProtectedComponent implements OnInit {
   message: string;
   temp;
 
-  constructor(private _servicio:ServiceCategorias, private router: Router, private _servicio2:ServiceGeneral, private formBuilder:FormBuilder, @Inject(DOCUMENT) private document: Document) {
-    this.categoria= _servicio.obtener_categoria();
+  constructor(private _servicio:ServiceCategoriasEstado, private router: Router, private _servicio2:ServiceGeneral, private formBuilder:FormBuilder, @Inject(DOCUMENT) private document: Document) {
     this.estado= _servicio.obtener_estado();
     clearTimeout(this.temp);
      this.temp = setTimeout(this.nota, 500);
    }
 
   ngOnInit(): void {
-    this.getFecha();
-    this.uploadForm=this.formBuilder.group({
-      id:[null],
-      fecha:[this.fechaHoy],
+      let okCat=this.obtenerCategorias();
+      console.log("raro", okCat);
+      this.getFecha();
+      this.uploadForm=this.formBuilder.group({
+      fechaAlta:[this.fechaHoy],
       categorias:['',[Validators.required]],
+      estado:['',[Validators.required]],
       titulo:['',[Validators.required]],
       subtitulo:['',[Validators.required]],
       descripcion:['', [Validators.required]],
-      avatar: [null],
       nombreImagen: [null],
-      estado:['',[Validators.required]],
+      precio:[null],
     });
   }
 
@@ -55,22 +57,24 @@ export class ProtectedComponent implements OnInit {
     alert("EL TEXTO ES EL PILAR MAESTRO, USA TÍTULOS CORTOS Y CLAROS PARA LOGRAR UN TAMAÑO"
     + "VISIBLE Y ACORDE AL DISEÑO.")
   }
+  // FECHA
   getFecha(){
     var d = new Date();
     this.fechaHoy = d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate();
     console.log("fecha", this.fechaHoy)   
   }
-
+  // IMAGEN EN FORM && SERVIDOR
   guardarImagenEnFormGroup(files){
     this.imagenPrevisualizar=files;
     let imagen = files[0];
     this.uploadForm.controls['nombreImagen'].setValue(imagen ? imagen.name : ''); // <-- Set Value for Validation
-    this.uploadForm.controls['avatar'].setValue(imagen ? imagen.name : ''); 
+    // this.uploadForm.controls['avatar'].setValue(imagen ? imagen.name : ''); 
   }
   
   guardarArchivoServidor(files){
       let fileImg=new FormData();
       fileImg.append('file', files[0]);
+      console.log("IMAGEN", fileImg);
       this._servicio2.guardarArchivoServidor(fileImg).subscribe(
         datos=>{
           if(datos['resultado']=='OK'){
@@ -84,7 +88,6 @@ export class ProtectedComponent implements OnInit {
   previsualizarImg(files){
     var img = files[0].type;
     this.visualizarNuevaImagenSeleccionada();
-
     if (files.length === 0){
       return;
     }else if (img.match(/image\/*/) == null) {
@@ -101,15 +104,47 @@ export class ProtectedComponent implements OnInit {
   }
 
   visualizarNuevaImagenSeleccionada(){
+    //AL EDITAR LA IMAGEN
     if(this.imgEditarForm){
       this.imgBorrarServidor=this.imgEditarForm;
       this. imgEditarForm=null;
     }
   }
 
+  borrarArchivoServidor() {
+    this._servicio2.borrarArchivoServidor(this.imgBorrarServidor).subscribe(
+      datos=>{
+        if(datos['resultado']=='OK'){
+          console.log(datos['mensaje']);
+        }else{ console.log("NO SE PUDO CONECTAR CON EL SERVIDOR");
+      }}
+  ); }
+
   get f(){ return this.uploadForm.controls;}
 
+  //INTERACCION BBDD
+  obtenerCategorias(){
+    this._servicio.obtener_categoria().subscribe(res => { 
+      console.log("res", res);
+      this.mostrarCategorias(res);
+   })
+}
+
+  mostrarCategorias(res:[]){
+    for(let i=0;i<res.length;i++){
+              this.categorias.push(res[i]);
+              this.categorias.values.toString;
+              console.log(" categoria aca", this.categorias);
+              if(this.categorias[i].descripcion!=null){
+                console.log("CATEGORIA", this.categorias[i].descripcion!=null);
+              }
+        }
+  }
+
   insertarDatos(){
+    console.log(    this.uploadForm.value
+      );
+      console.log(this.fechaHoy)
     this._servicio2.insertarDatos(this.uploadForm.value).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
@@ -127,18 +162,9 @@ export class ProtectedComponent implements OnInit {
           console.log(datos['mensaje']);
         }else{ console.log("NO SE PUDO CONECTAR");}
       }
-    );  }
-
-  borrarArchivoServidor() {
-    this._servicio2.borrarArchivoServidor(this.imgBorrarServidor).subscribe(
-      datos=>{
-        if(datos['resultado']=='OK'){
-          console.log(datos['mensaje']);
-        }else{ console.log("NO SE PUDO CONECTAR CON EL SERVIDOR");
-      }}
-  ); }
-
-      
+    );  
+  }
+    //SUBMITTED  
     submitted=false;
     onSubmit(){
       this.submitted=true;
@@ -148,7 +174,7 @@ export class ProtectedComponent implements OnInit {
         if(this.accion=="editar"){
           if(this.imgURL!=null){
             this.guardarArchivoServidor(this.imagenPrevisualizar);
-            console.log("imagen a guardar", this.imagenPrevisualizar)
+            console.log("img previsualizar line 177", this.imagenPrevisualizar)
             this.borrarArchivoServidor();
           }
           this.editarDatos();
@@ -156,11 +182,13 @@ export class ProtectedComponent implements OnInit {
         }
         if(this.accion=="nuevo"){
           this.guardarArchivoServidor(this.imagenPrevisualizar);
-          alert('Publicacion Cargada');
+          console.log("img previsualizar line 177", this.imagenPrevisualizar)
           this.insertarDatos();
+          alert('Publicacion Cargada');
+
         }
-        this.accion="nuevo";
-         this.limpiar();
+        // this.accion="nuevo";
+        //  this.limpiar();
       }
     }
     
@@ -186,8 +214,6 @@ export class ProtectedComponent implements OnInit {
       this.accion="editar";
       console.log("accion", this.accion);
       console.log("e",e );
-
-
     }
 
 }

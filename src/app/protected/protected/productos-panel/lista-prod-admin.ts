@@ -19,7 +19,7 @@ import { Publicaciones } from 'src/app/models/publicaciones';
     p:Publicaciones;
     temp;
 
-    constructor(private _servicio:ServiceGeneral, private http: HttpClient) {
+    constructor(private _servicioG:ServiceGeneral, private http: HttpClient) {
       console.log("funcionando servicio");
       this.traerDatosPublicaciones();
      }
@@ -27,7 +27,7 @@ import { Publicaciones } from 'src/app/models/publicaciones';
     ngOnInit(): void {}
   
     traerDatosPublicaciones(){
-        this._servicio.traerDatos().subscribe(res => { 
+        this._servicioG.traerDatos().subscribe(res => { 
           console.log(res);
           this.mostrarDatosPublicaciones(res);
        })
@@ -36,10 +36,10 @@ import { Publicaciones } from 'src/app/models/publicaciones';
     mostrarDatosPublicaciones(res:[]){
        for(let i=0;i<res.length;i++){
                  this.publicaciones.push(res[i]);
+                 console.log("a", this.publicaciones[i])
                  this.publicaciones.values.toString;
                  if(this.publicaciones[i].nombreImagen==null){
                   this.publicaciones[i].nombreImagen='default.jpg'
-                  console.log("IMAGEN", this.publicaciones[i].nombreImagen);
                 }
            }
     }
@@ -50,13 +50,13 @@ import { Publicaciones } from 'src/app/models/publicaciones';
     }
 
     publicar(p){
-      this._servicio.guardarPublicacionParaScreenShot(p);
+      this._servicioG.guardarPublicacionParaScreenShot(p);
       this.p=p; 
       console.log(p)
     }
 
     eliminar(p){
-      this._servicio.eliminar(p).subscribe(
+      this._servicioG.eliminar(p).subscribe(
         p=>{
           if(p['resultado']=='OK'){
             alert("SE ELIMINO EXITOSAMENTE")
@@ -65,7 +65,7 @@ import { Publicaciones } from 'src/app/models/publicaciones';
         }
       );   
       console.log("id:", p);
-      this._servicio.borrarArchivoServidor(p.nombreImagen).subscribe(
+      this._servicioG.borrarArchivoServidor(p.nombreImagen).subscribe(
         datos=>{
           if(datos['resultado']=='OK'){
             console.log(datos['mensaje']);

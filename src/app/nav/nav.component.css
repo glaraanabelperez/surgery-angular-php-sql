@@ -1,7 +1,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&family=Oswald:wght@500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans&display=swap");
 * {
   font-size: 14px;
-  font-family: "Open+Sans", sans-serif, sans-serif;
+  font-family: "DM Sans", sans-serif, sans-serif;
+}
+
+.row {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.tituloPrincipal {
+  font-size: 3rem;
 }
 
 h1 {
@@ -14,32 +29,37 @@ h1 {
 }
 
 h2 {
-  font-size: 1rem;
-  color: #4e4e4e;
+  font-size: 1.1rem;
+  color: #505e47;
   font-weight: bold;
-  text-transform: uppercase;
+  letter-spacing: 0.1pc;
 }
 
 h3 {
   font-size: 1.3em;
-  letter-spacing: 1.2px;
 }
 
 h4 {
   font-size: 1em;
-  letter-spacing: 1.2px;
 }
 
 p {
-  margin: 0%;
+  margin: 0% !important;
+  width: 100%;
   overflow-wrap: break-word;
 }
 
-span {
-  font-size: 2.3rem;
-  color: #4e4e4e;
+.p-fondo {
+  font-size: 1.8rem;
+  color: #F5F5F5;
   font-weight: 500;
   text-transform: uppercase;
+}
+
+span {
+  font-size: 1.8rem;
+  color: #F5F5F5;
+  font-weight: 500;
 }
 
 form label {
@@ -47,7 +67,7 @@ form label {
 }
 
 .tituloTarjeta {
-  margin-top: 15%;
+  margin-top: 5%;
   color: #a0c2c3;
   display: block;
   font-size: 1rem;
@@ -70,6 +90,11 @@ form label {
   font-weight: 500;
   letter-spacing: 1px;
   text-overflow: clip;
+}
+
+.estiloBotonSimple {
+  font-size: 1rem;
+  font-weight: bold;
 }
 
 .buttons {
@@ -154,85 +179,47 @@ form label {
 
 /* Smartphones (portrait and landscape) ----------- */
 /* iPads (portrait and landscape) ----------- */
-.nav {
+.navPedidos-productos {
   height: 35%;
   position: static;
   width: 100%;
 }
 
-.nav hr {
+.navPedidos-productos hr {
   width: 100%;
 }
 
-.nav div.scrollmenu {
+.navPedidos-productos div.scrollmenu {
   overflow: auto;
   white-space: nowrap;
   width: 90%;
 }
 
-.nav div.scrollmenu a {
+.navPedidos-productos div.scrollmenu a {
   display: inline-block;
   text-align: center;
   text-decoration: none;
   margin-left: 7%;
   font-size: 1.2rem;
-  color: rgba(26, 26, 25, 0.3);
 }
 
-.nav div.scrollmenu a i {
+.navPedidos-productos div.scrollmenu a i {
   margin-left: 5px;
 }
 
-.nav div.scrollmenu a:hover {
+.navPedidos-productos div.scrollmenu a:hover {
   color: #313115;
 }
 
-.nav .conteiner1 {
-  width: 10%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-  background: none;
-}
-
-.nav .conteiner1 .buttonsLaterales {
-  position: fixed;
-  top: 230px;
-  right: 10px;
+.navPedidos-productos .menuPaginaI {
+  margin-top: 3%;
+  margin-bottom: 3%;
+  margin-left: 5%;
+  width: 90%;
   background-color: white;
-  border-radius: 15px;
-  padding: 2% 2% 2% 2%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  z-index: 999;
 }
 
-.nav .conteiner1 .buttonsLaterales .fa-envelope {
-  color: #313115;
-}
-
-.nav .conteiner1 .buttonsLaterales .fa-arrow-circle-up {
-  position: absolute;
-  bottom: -120%;
-  color: #313115;
-}
-
-.nav .menuPaginaI {
-  margin-top: 1%;
-  overflow: auto;
-  white-space: nowrap;
-}
-
-.nav .menuPaginaI a {
+.navPedidos-productos .menuPaginaI a {
   font-size: 1rem;
   color: #313115;
   display: inline-block;
@@ -240,5 +227,101 @@ form label {
   text-decoration: none;
   margin-left: 7%;
   margin-top: 2%;
+}
+
+.navPedidos-productos .nav-Secundario {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  overflow: auto;
+  white-space: nowrap;
+  width: 90%;
+}
+
+.navPedidos-productos .conteiner1 {
+  width: 0%;
+  background: none;
+}
+
+.navPedidos-productos .conteiner1 .buttonsLaterales {
+  position: fixed;
+  top: 250px;
+  right: 30px;
+  background-color: white;
+  border: 1px solid rgba(26, 26, 25, 0.3);
+  border-radius: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  font-size: 20px;
+  z-index: 99;
+  padding: 10px 10px 10px 10px;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.navPedidos-productos .conteiner1 .buttonsLaterales .fa-instagram {
+  font-size: 17px;
+}
+
+.navPedidos-productos .conteiner1 .buttonsLaterales .fa-home {
+  font-size: 17px;
+}
+
+.navPedidos-productos .conteiner1 .buttonsLaterales .fa-facebook-square {
+  font-size: 17px;
+}
+
+.navPedidos-productos .conteiner1 .buttonsLaterales .fa-envelope {
+  color: #313115;
+  font-size: 17px;
+}
+
+.navPedidos-productos .conteiner1 .buttonsLaterales .fa-arrow-circle-up {
+  position: absolute;
+  bottom: -50%;
+  color: #313115;
+  font-size: 17px;
+}
+
+.navPedidos-productos .conteiner1 .buttonsLaterales .fa-shopping-cart {
+  right: 10px;
+  bottom: -110%;
+  color: rgba(26, 26, 25, 0.3);
+  font-size: 30px;
+  width: 45px;
+  height: 45px;
+  padding: 10px 10px 10px 10px;
+  border: 1px solid gainsboro;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+@media only screen and (min-width: 320px) and (max-width: 768px) {
+  .menuPaginaI {
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-bottom: 3%;
+    overflow: auto;
+    white-space: nowrap;
+    background-color: whitesmoke;
+  }
+  .menuPaginaI button {
+    background: none;
+    border: none;
+    font: uppercase;
+  }
+  .conteiner1 .buttonsLaterales .fa-shopping-cart {
+    right: 0px !important;
+  }
 }
 /*# sourceMappingURL=nav.component.css.map */
