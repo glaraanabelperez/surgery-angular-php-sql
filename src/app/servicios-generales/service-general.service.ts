@@ -1,5 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs';
+import { Categorias } from '../models/categorias';
 import { Publicaciones } from '../models/publicaciones';
 
 
@@ -8,28 +10,45 @@ import { Publicaciones } from '../models/publicaciones';
 })
 export class ServiceGeneral {
 
+  estado: String[]=['Activada', 'Desactivada'];
   publicacionParaScreenShot:Publicaciones;
-  visualizarCardProducto:Publicaciones;
+  objetoParaElCardProd:Publicaciones;
 
-  // url='http://localhost/angular/mi-tienda/php-app/';
-  // url2='http://localhost/angular/mi-tienda/src/';
-  url='/php-app/';
-  url2='/';
-  vertical:boolean;
-  cuadrada: boolean;
-  horizontal:boolean;
+  categoriaElegida2:Categorias;
+  categoriaSubject:Subject <Categorias> = new  Subject <Categorias>();
 
+  verPedido:boolean;
+  verPedidoSubject:Subject <boolean> = new Subject <boolean>();
+
+
+  url='http://localhost/angular/mi-tienda/php-app/';
+  url2='http://localhost/angular/mi-tienda/src/';
+
+  // url='/php-app/';
+  // url2='/';
+  
   constructor(private http: HttpClient) { 
     console.log("funcionando servicio general");
     this.traerDatos();
+    this.categoriaSubject.subscribe((value) =>{
+      this.categoriaElegida2=value;
+    })
+    this.verPedidoSubject.subscribe((value) =>{
+      this.verPedido=value;
+    })
   }
-    //API
+    //BBDD
     traerDatos(){    
     return this.http.get<[]>(`${this.url}select.php`);
     }
-    //DATOS ESPECIFICOS
+
     obtener_categoria(){
+      console.log("llega hasta aca");
       return this.http.get<[]>(`${this.url}selectCategorias.php`);
+    }
+
+    obtener_estado(){
+      return this.estado;
     }
     
     eliminar(p){
@@ -41,7 +60,7 @@ export class ServiceGeneral {
     }
 
     editarDatos(p){
-      console.log("p", )
+      console.log("pPPPPPP",p )
       return  this.http.post(`${this.url}editar.php`, JSON.stringify(p));
     }
    
@@ -53,6 +72,34 @@ export class ServiceGeneral {
     borrarArchivoServidor(datos){
       return  this.http.post(`${this.url2}borrarArchivoServidor.php`, JSON.stringify(datos));
     }
+
+    //INTERFACE CATEGROIAS
+    setCatgeoriasElegida(c){
+      this.categoriaElegida2=c;
+    }
+
+    suscribeOnChange(c){
+        this.categoriaSubject.next(c);
+    }
+
+    getCategroiaElegida(){
+      return this.categoriaElegida2;
+    }
+    
+    //PEDIDOS
+    setVerPedido(b: boolean){
+      this.verPedido=b;
+    }
+
+    suscribeOnChangePedido(b : boolean){
+        this.verPedidoSubject.next(b);
+    }
+
+    getVerPedido(){
+      return this.verPedido;
+    }
+
+
     //MODEL PUBLICACIONES
     guardarPublicacionParaScreenShot(p){
       this.publicacionParaScreenShot=p;
@@ -61,26 +108,14 @@ export class ServiceGeneral {
     obtenerDatosPubliScreenShot(){
       return this.publicacionParaScreenShot;
     }
+
     //VISUALIZAR CARD
-    setVisualizarCard(p){
-      this.visualizarCardProducto=p;
+    setObjetoParaCardProd(p){
+      this.objetoParaElCardProd=p;
     }
 
-    getVisualizarCard(){
-      return this.visualizarCardProducto;
-    }
-  
-    // NOSE TODAVIA
-    setOrientacionVertical(result:boolean){
-      this.vertical=result;
-    }
-
-    setOrientacionHorizontal(result:boolean){
-      this.horizontal=result;
-    }
-
-    setOrientacionCuadrada(result:boolean){
-      this.cuadrada=result;
+    getObjetoParaCardProd(){
+      return this.objetoParaElCardProd;
     }
 
 }

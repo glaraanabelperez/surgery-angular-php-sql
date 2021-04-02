@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { Router } from '@angular/router';
 import { ServiceGeneral } from 'src/app/servicios-generales/service-general.service';
-import {ServiceCategoriasEstado} from '../servicios-categorias-estados/service-categroias-estado.service';
 import { Categorias } from 'src/app/models/categorias';
+import { Publicaciones } from 'src/app/models/publicaciones';
+import { Console } from 'console';
 
 declare var $:any;
 
@@ -17,13 +17,13 @@ declare var $:any;
 })
 
 export class ProtectedComponent implements OnInit {
+  estado: String[]=[];
+  fechaHoy:any;
+  categoriasBBDD :Categorias[] = [];
+  publicacionEditar: Publicaciones[] = [];
 
   uploadForm: FormGroup;
-  categorias :Categorias[] = [];
-  // categorias: any []=[];
-  estado: String[]=[];
-  accion:string="nuevo";
-  fechaHoy: string;
+  accionBtnFormulario:string;
   imgEditarForm:any;
   imgBorrarServidor:any;
   imagenPrevisualizar: File;
@@ -31,27 +31,32 @@ export class ProtectedComponent implements OnInit {
   message: string;
   temp;
 
-  constructor(private _servicio:ServiceCategoriasEstado, private router: Router, private _servicio2:ServiceGeneral, private formBuilder:FormBuilder, @Inject(DOCUMENT) private document: Document) {
-    this.estado= _servicio.obtener_estado();
+  constructor( private _servicioGeneral:ServiceGeneral, private formBuilder:FormBuilder, @Inject(DOCUMENT) private document: Document) {
+    this.estado= _servicioGeneral.obtener_estado();
+    this.obtenerCategorias();
+    this.getFecha();
+    console.log("fecha", this.fechaHoy);
     clearTimeout(this.temp);
-     this.temp = setTimeout(this.nota, 500);
+    this.temp = setTimeout(this.nota, 500);
+    this.accionBtnFormulario="nuevo";
    }
 
   ngOnInit(): void {
-      let okCat=this.obtenerCategorias();
-      console.log("raro", okCat);
-      this.getFecha();
       this.uploadForm=this.formBuilder.group({
-      fechaAlta:[this.fechaHoy],
+      codigo_producto:[null],
       categorias:['',[Validators.required]],
       estado:['',[Validators.required]],
       titulo:['',[Validators.required]],
       subtitulo:['',[Validators.required]],
       descripcion:['', [Validators.required]],
       nombreImagen: [null],
+      fechaAlta:[this.fechaHoy],
+      fechaBaja:[null],
       precio:[null],
     });
   }
+
+  get f(){ return this.uploadForm.controls;}
 
   nota(){
     alert("EL TEXTO ES EL PILAR MAESTRO, USA TÍTULOS CORTOS Y CLAROS PARA LOGRAR UN TAMAÑO"
@@ -61,7 +66,6 @@ export class ProtectedComponent implements OnInit {
   getFecha(){
     var d = new Date();
     this.fechaHoy = d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate();
-    console.log("fecha", this.fechaHoy)   
   }
   // IMAGEN EN FORM && SERVIDOR
   guardarImagenEnFormGroup(files){
@@ -75,7 +79,7 @@ export class ProtectedComponent implements OnInit {
       let fileImg=new FormData();
       fileImg.append('file', files[0]);
       console.log("IMAGEN", fileImg);
-      this._servicio2.guardarArchivoServidor(fileImg).subscribe(
+      this._servicioGeneral.guardarArchivoServidor(fileImg).subscribe(
         datos=>{
           if(datos['resultado']=='OK'){
             console.log(datos['mensaje']);
@@ -112,7 +116,7 @@ export class ProtectedComponent implements OnInit {
   }
 
   borrarArchivoServidor() {
-    this._servicio2.borrarArchivoServidor(this.imgBorrarServidor).subscribe(
+    this._servicioGeneral.borrarArchivoServidor(this.imgBorrarServidor).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
           console.log(datos['mensaje']);
@@ -120,11 +124,9 @@ export class ProtectedComponent implements OnInit {
       }}
   ); }
 
-  get f(){ return this.uploadForm.controls;}
-
   //INTERACCION BBDD
   obtenerCategorias(){
-    this._servicio.obtener_categoria().subscribe(res => { 
+    this._servicioGeneral.obtener_categoria().subscribe(res => { 
       console.log("res", res);
       this.mostrarCategorias(res);
    })
@@ -132,20 +134,14 @@ export class ProtectedComponent implements OnInit {
 
   mostrarCategorias(res:[]){
     for(let i=0;i<res.length;i++){
-              this.categorias.push(res[i]);
-              this.categorias.values.toString;
-              console.log(" categoria aca", this.categorias);
-              if(this.categorias[i].descripcion!=null){
-                console.log("CATEGORIA", this.categorias[i].descripcion!=null);
-              }
+              this.categoriasBBDD.push(res[i]);
+              this.categoriasBBDD.values.toString;
         }
   }
 
   insertarDatos(){
-    console.log(    this.uploadForm.value
-      );
-      console.log(this.fechaHoy)
-    this._servicio2.insertarDatos(this.uploadForm.value).subscribe(
+    console.log(this.fechaHoy);
+    this._servicioGeneral.insertarDatos(this.uploadForm.value).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
           console.log(datos['mensaje']);
@@ -155,8 +151,8 @@ export class ProtectedComponent implements OnInit {
   }
 
   editarDatos() {
-    console.log(this.uploadForm.value);
-    this._servicio2.editarDatos(this.uploadForm.value).subscribe(
+    console.log("form", this.uploadForm.value);
+    this._servicioGeneral.editarDatos(this.uploadForm.value).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
           console.log(datos['mensaje']);
@@ -171,7 +167,7 @@ export class ProtectedComponent implements OnInit {
       if(this.uploadForm.invalid){
         return;
       }else{
-        if(this.accion=="editar"){
+        if(this.accionBtnFormulario=="editar"){
           if(this.imgURL!=null){
             this.guardarArchivoServidor(this.imagenPrevisualizar);
             console.log("img previsualizar line 177", this.imagenPrevisualizar)
@@ -179,41 +175,44 @@ export class ProtectedComponent implements OnInit {
           }
           this.editarDatos();
           alert('Publicacion Editada');
+          this.limpiar();
+
         }
-        if(this.accion=="nuevo"){
+        if(this.accionBtnFormulario=="nuevo"){
           this.guardarArchivoServidor(this.imagenPrevisualizar);
           console.log("img previsualizar line 177", this.imagenPrevisualizar)
           this.insertarDatos();
           alert('Publicacion Cargada');
-
+          this.limpiar();
         }
-        // this.accion="nuevo";
-        //  this.limpiar();
       }
     }
-    
+
     limpiar(){
-      // location.reload();
       this.document.location.reload(); 
-      // this.router.navigate(['/protected']);
     }
 
-    editarPubliId(e){
-      this.uploadForm.controls['id'].setValue(e.id ? e.id : ''); // <-- Set Value for Validation
-      this.uploadForm.controls['fecha'].setValue(e.fecha ? e.fecha : ''); // <-- Set Value for Validation
-      this.uploadForm.controls['categorias'].setValue(e.categoria ? e.categoria : ''); // <-- Set Value for Validation
+    editarPubliId(e: Publicaciones){
+
+      this.uploadForm.controls['codigo_producto'].setValue(e.codigo_producto ? e.codigo_producto: ''); // <-- Set Value for Validation
+      this.uploadForm.controls['categorias'].setValue(e.categorias ? e.categorias: ''); // <-- Set Value for Validation
+      this.uploadForm.controls['estado'].setValue(e.estado ? e.estado : ''); // <-- Set Value for Validation
       this.uploadForm.controls['titulo'].setValue(e.titulo ? e.titulo : ''); // <-- Set Value for Validation
       this.uploadForm.controls['subtitulo'].setValue(e.subtitulo ? e.subtitulo : ''); // <-- Set Value for Validation
       this.uploadForm.controls['descripcion'].setValue(e.descripcion ? e.descripcion : ''); // <-- Set Value for Validation
       this.uploadForm.controls['nombreImagen'].setValue(e.nombreImagen ? e.nombreImagen : ''); // <-- Set Value for Validation
-      this.uploadForm.controls['estado'].setValue(e.estado ? e.estado:''); // <-- Set Value for Validation
+      this.uploadForm.controls['fechaAlta'].setValue(e.fechaAlta ? e.fechaAlta : ''); // <-- Set Value for Validation
+      this.uploadForm.controls['fechaBaja'].setValue(e.fechaBaja ? e.fechaBaja : ''); // <-- Set Value for Validation
+      this.uploadForm.controls['precio'].setValue(e.precio ? e.precio : ''); // <-- Set Value for Validation
+
       window.scrollTo(0,0)
       if(e.nombreImagen!=null){
         this. imgEditarForm=e['nombreImagen'];
       }
-      this.accion="editar";
-      console.log("accion", this.accion);
-      console.log("e",e );
+      this.accionBtnFormulario="editar";
+      console.log("categorias", e.categorias);
+      console.log("uploadForm", this.uploadForm.value);
+
     }
 
 }

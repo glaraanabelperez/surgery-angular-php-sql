@@ -3,8 +3,7 @@ import { Component, OnInit , EventEmitter, Output, Input} from '@angular/core';
 import { Publicaciones } from '../models/publicaciones';
 import { ServiceGeneral } from '../servicios-generales/service-general.service';
 import { ServicePedidos } from '../servicios-pedidos/service-pedidos.service';
-import { ActivatedRoute, Params } from '@angular/router';
-import { ApiDatos } from '../models/api-datos.model';
+import { Categorias } from '../models/categorias';
 
 
 
@@ -14,41 +13,35 @@ import { ApiDatos } from '../models/api-datos.model';
     styleUrls: ['./list-card.component.scss']
   })
   export class ListCardComponent implements OnInit {
-    publicaciones :Publicaciones[] = [];
-    publicacionesXcategoria :Publicaciones[] = [];
-    @Output() onClicked:EventEmitter<Publicaciones>;
 
+    @Output() onClicked:EventEmitter<Publicaciones>;
+    publicaciones :Publicaciones[] = [];
+    categoriaElegida:Categorias;
     imgDefecto:string;
-    categoriaEstablecida: any;
-    categoriaEstablecida2;
     colorEstado; color1; color2;
     ver: string;
     
-    constructor(private _servicio:ServiceGeneral,  private http: HttpClient, 
-      private _servicioPedidos:ServicePedidos, public apiDatos: ApiDatos) {
-        
+    constructor(private _servicio:ServiceGeneral, private _servicioPedidos:ServicePedidos) {
+        console.log("funcionando lista card")
+        this.categoriaElegida=this._servicio.getCategroiaElegida();
         this.onClicked=new EventEmitter();
         this.color1='rgb(122, 226, 3)';
         this.color2='rgb(3, 226, 170)';
         this.colorEstado= this.color1;
         this.ver='none';
+        this.traerDatosPublicaciones();
       }
      
      ngOnInit(): void {
+      this.categoriaElegidass();
     }
 
-    traerCategoria(){
-      this.categoriaEstablecida2=this.apiDatos.categoriaObjeto.codigo_categoria;
-      console.log(this.categoriaEstablecida2)
-      return this.categoriaEstablecida2;
+    categoriaElegidass(){
+      this._servicio.categoriaSubject.subscribe((value)=>{
+        this.categoriaElegida=value;
+        console.log("suscripcion", this.categoriaElegida)
+      })
     }
-
-    establecerCategoria(value) {
-      this.categoriaEstablecida = value.codigo_categoria;
-      console.log("acacacaccacaca", this.categoriaEstablecida)
-      this.traerDatosPublicaciones();
-//METODOACCIONADO DESDE COMPONENTEPADRE
-      }
 
     traerDatosPublicaciones(){
         this._servicio.traerDatos().subscribe(res => { 
@@ -73,6 +66,7 @@ import { ApiDatos } from '../models/api-datos.model';
         codigo_producto: p.codigo_producto,
         cantidad:1,
         titulo:p.titulo,
+        precio:p.precio,
       }
         this._servicioPedidos.agregarPedido(pedido);
         console.log("pedidos guardados", this._servicioPedidos.obtenerPedido());
@@ -86,11 +80,10 @@ import { ApiDatos } from '../models/api-datos.model';
         }
     }
 
-    verCard(p){
-      this.onClicked.emit(p);
-    }
-    
-    
+    verCard(p :Publicaciones){
+      this._servicio.setObjetoParaCardProd(p);
+      console.log(this._servicio.getObjetoParaCardProd());
+    } 
 
 }
   

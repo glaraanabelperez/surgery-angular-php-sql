@@ -1,18 +1,18 @@
 <div class="foto">
-	<div style="margin-left: 30%;">
-		<div style="font-size: 25px; display: block; margin: 2% 40% 2% 40%" >
-			<a (click)="redireccion()" style="cursor: pointer;" >
-				<i class="fa fa-window-close" aria-hidden="true" ></i>
+	<div style="margin-left: 10%;">
+		<div style="display: block; text-align: left; margin-bottom: 2%;" >
+			<a (click)="redireccion()" style="cursor: pointer; margin-right: 40px; " >
+				<i class="fa fa-window-close" style="font-size: 18px;" aria-hidden="true" ></i>
 			</a>
-			<a (click)="foto()" style="margin-right: 40px; cursor: pointer;">
-				<i class="fa fa-camera-retro "  aria-hidden="true" ></i>
+			<a (click)="foto()" style="cursor: pointer;">
+				<i class="fa fa-camera-retro " style="font-size: 25px;"   aria-hidden="true" ></i>
 			</a>
 		</div>
 		
 	</div>
 			<section #screen  id="screen" class="product_CUADRADO">
 				<div class="img">
-					<img  [src]="'assets/logo.jpg'" >
+					<img  [src]="'assets/logo.png'" >
 				</div>
 				<div class="product__photo_CUADRADO">
 					<img #img  class="fotoT_CUADRADO" [src]="'assets/' + p.nombreImagen" >

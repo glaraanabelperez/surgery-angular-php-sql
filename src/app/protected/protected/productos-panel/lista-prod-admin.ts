@@ -36,8 +36,7 @@ import { Publicaciones } from 'src/app/models/publicaciones';
     mostrarDatosPublicaciones(res:[]){
        for(let i=0;i<res.length;i++){
                  this.publicaciones.push(res[i]);
-                 console.log("a", this.publicaciones[i])
-                 this.publicaciones.values.toString;
+                 this.publicaciones.values;
                  if(this.publicaciones[i].nombreImagen==null){
                   this.publicaciones[i].nombreImagen='default.jpg'
                 }

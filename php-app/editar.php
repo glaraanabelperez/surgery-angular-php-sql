@@ -4,15 +4,10 @@
     header('Access-Control-Allow-Methods: GET, POST');
     $json=file_get_contents('php://input');//recibe el jason de afuera
     $params=json_decode($json);//decodifica el json y guarda en params
-
     function connect()
     {
-<<<<<<< HEAD
       // $connect = mysqli_connect('localhost','id16388186_matizprograming', '!Lara30306[jose]', 'id16388186_tienda');
-      $connect = mysqli_connect('localhost','root', '', 'laparo');
-=======
-      $connect = mysqli_connect();
->>>>>>> 2954d2251d0487614ffc1d710c11d1c45e1c7acd
+      $connect = mysqli_connect('localhost','root', '', 'tienda');
 
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
@@ -20,13 +15,15 @@
       mysqli_set_charset($connect, "utf8");
       return $connect;
     }
-    $id=$params->id;
+    $id=$params->codigo_producto;
     $co = connect();
-    $sql="UPDATE publicaciones SET 
-    fecha='$params->fecha', categoria='$params->categoria', titulo='$params->titulo', 
-    subtitulo='$params->subtitulo', descripcion='$params->descripcion', avatar='$params->avatar',
-    nombreImagen='$params->nombreImagen', estado='$params->estado'WHERE ID=$id";
-    $respuesta=mysqli_query($co, $sql);
+    $sql= "UPDATE `productos` SET `categorias`='$params->categorias',
+    `estado`='$params->estado',`titulo`='$params->titulo',
+    `subtitulo`='$params->subtitulo',
+    `descripcion`='$params->descripcion',`nombreImagen`='$params->nombreImagen',
+    `fechaAlta`='$params->fechaAlta',`fechaBaja`='$params->fechaBaja',
+    `precio`='$params->precio' WHERE `codigo_producto`=$id";
+    $respuesta=mysqli_query($co, $sql); 
 
       class Result{}
       $response=new Result();

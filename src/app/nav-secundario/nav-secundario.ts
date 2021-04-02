@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { ApiDatos } from '../models/api-datos.model';
-import { ObjetoCategoria } from '../models/objeto-categoria.model';
+import { Categorias } from '../models/categorias';
 
 
 @Component({
@@ -11,15 +11,13 @@ import { ObjetoCategoria } from '../models/objeto-categoria.model';
   })
 
   export class NavSecundario implements OnInit {
-    @Input()categoria:ObjetoCategoria;
-    @Input()categoriaIndex:ObjetoCategoria;
-    
-    @Output() onClicked:EventEmitter<ObjetoCategoria>;
+    @Input()categoria:Categorias;
+    @Output() onClicked:EventEmitter<Categorias>;
 
-    constructor(public _apiDatos: ApiDatos){
+    constructor(){
         this.onClicked=new EventEmitter();
-         // this.updates=[];
     }
+
     ngOnInit():void {
     }
 

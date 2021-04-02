@@ -20,7 +20,7 @@
 }
 
 h1 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #4e4e4e;
   padding: 10px 0px 0px 0px;
   display: block;
@@ -29,14 +29,14 @@ h1 {
 }
 
 h2 {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: #505e47;
   font-weight: bold;
   letter-spacing: 0.1pc;
 }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 h4 {
@@ -179,133 +179,142 @@ form label {
 
 /* Smartphones (portrait and landscape) ----------- */
 /* iPads (portrait and landscape) ----------- */
-.ocualar {
-  display: none;
-}
-
-.mostrar {
-  display: block;
-}
-
-.fa-window-close {
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  border: none;
-}
-
-.fa-user-circle {
-  position: absolute;
-  right: 5px;
-  font-size: 50px;
-}
-
-.fa-share-square {
-  font-size: 26px;
-}
-
-.fa-archive {
-  font-size: 30px;
-}
-
-.card {
-  background: #fff;
-  border-radius: 4px;
-  -webkit-box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-          box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-  width: 70%;
-  border-top-right-radius: 25px;
-  border-bottom-right-radius: 25px;
-  margin: 5% 10% 10% 0% !important;
-}
-
-.card h2 {
+.conteiner-pedido {
+  background-color: white;
   width: 100%;
-  padding: 0 1rem;
+  position: fixed;
+  z-index: 999;
+  left: 0px;
+  top: 12%;
+  padding: 2%;
+  /* iPads (portrait and landscape) ----------- */
 }
 
-.card .title {
-  padding: 1rem;
-  text-align: right;
+.conteiner-pedido .scrollCard {
+  overflow: auto;
+  height: 400px;
+  border: 1px solid gainsboro;
+  padding: 1%;
+}
+
+.conteiner-pedido .list-card2 {
+  padding: 1%;
+  width: 100%;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  color: black;
-  font-weight: bold;
-  font-size: 12px;
+  /* Smartphones (portrait and landscape) ----------- */
 }
 
-.card .desc {
-  padding: 0.5rem 1rem;
-  font-size: 12px;
+.conteiner-pedido .list-card2 .mensaje {
+  display: block;
+  text-align: center;
+  margin-bottom: 2%;
 }
 
-.card .actions {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  padding: 0.5rem 1rem;
+.conteiner-pedido .list-card2 .list-card {
+  background-color: whitesmoke;
+  margin: auto;
+  width: 50%;
+  height: 50%;
+  padding: 1%;
 }
 
-.title-total {
-  padding: 2.5em 1.5em 1.5em 1.5em;
+.conteiner-pedido .list-card2 .list-card .foto {
+  width: 100%;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
-button {
-  border: none;
+.conteiner-pedido .list-card2 .list-card .foto .imgCard {
+  padding: 10%;
+  width: 100%;
+}
+
+.conteiner-pedido .list-card2 .list-card .info-derecha {
+  width: 100%;
+  margin-left: 7%;
+}
+
+.conteiner-pedido .list-card2 .list-card .info-derecha .boton-eliminar {
   background: none;
-  font-size: 24px;
-  color: #f1288d;
-  cursor: pointer;
-  -webkit-transition: .5s;
-  transition: .5s;
+  border: 1px solid gainsboro;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
 }
 
-button:hover {
-  color: #a00872;
-  -webkit-transform: rotate(22deg);
-          transform: rotate(22deg);
-}
-
-.btonesAdmin {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
-}
-
-.fa-whatsapp {
+.conteiner-pedido .list-card2 .fa-whatsapp {
+  position: fixed;
+  right: 20%;
+  bottom: 25%;
+  font-size: 40px;
   color: #70dd03;
 }
 
-@media only screen and (min-width: 320px) and (max-width: 765px) {
-  div .card {
-    background: #fff;
-    margin: 5% 10% 10% 0% !important;
-    border-radius: 25px;
-    -webkit-box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-            box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-    width: 75%;
+@media only screen and (min-width: 320px) and (max-width: 480px) {
+  .conteiner-pedido .list-card2 {
+    /* Styles */
   }
-  .fa-user-circle {
-    position: absolute;
-    right: 5px;
-    font-size: 50px;
-  }
-  .fa-share-square {
-    font-size: 26px;
-  }
-  .fa-archive {
-    font-size: 30px;
-  }
-  form input {
+  .conteiner-pedido .list-card2 .list-card2 .list-card {
     width: 100%;
+    padding: 1%;
   }
-  .title-total h2 {
-    font-size: 1.4rem !important;
+  .conteiner-pedido .list-card2 .list-card2 .foto .imgCard {
+    padding: 5%;
+  }
+  .conteiner-pedido .list-card2 .list-card2 .info-derecha {
+    width: 100%;
+    margin-left: 5%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .conteiner-pedido .list-card2 .list-card2 .info-derecha .info {
+    margin-top: 1%;
+    width: 80%;
+  }
+  .conteiner-pedido .list-card2 .list-card2 .info-derecha .list-card-botones {
+    margin-top: 7%;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+  .conteiner-pedido {
+    /* Styles */
+  }
+  .conteiner-pedido .list-card .foto {
+    width: 75%;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  .conteiner-pedido .list-card .foto .imgCard {
+    padding: 5%;
+    width: 100%;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 40px;
+  }
+  .conteiner-pedido .list-card .info-derecha {
+    width: 100%;
+    margin-left: 5%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+  }
+  .conteiner-pedido .list-card .info-derecha .info {
+    margin-top: 1%;
+    width: 80%;
+  }
+  .conteiner-pedido .list-card .info-derecha .list-card-botones {
+    margin-top: 7%;
   }
 }
 /*# sourceMappingURL=ver-pedido.component.css.map */

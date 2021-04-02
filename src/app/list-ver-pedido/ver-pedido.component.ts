@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import {Router} from '@angular/router';
 import { ServicePedidos } from '../servicios-pedidos/service-pedidos.service';
 import { Pedidos } from '../models/Pedidos';
+import { ServiceGeneral } from '../servicios-generales/service-general.service';
 
 @Component({
   selector: 'ver-pedido',
@@ -11,18 +12,21 @@ import { Pedidos } from '../models/Pedidos';
 export class VerPedido implements OnInit {
   pedidosTodos:Pedidos[];
   pedido:string;
-  okPedido;mensaje;
+  okPedido;
+  mensaje;
 
-  constructor( private _service:ServicePedidos, private router:Router) { 
+  constructor( private _service:ServicePedidos, private _servicioGeneral: ServiceGeneral) { 
     this.pedidosTodos=this._service.obtenerPedido();
     console.log("pedidos", this.pedidosTodos);
     this.okPedido=false;
-    if(this.pedidosTodos.length==0){
-      this.mensaje="SU PEDIDO SE ENCUENTRA VACIO"
-    }
   }
 
   ngOnInit(): void {
+    if(this.pedidosTodos.length==0){
+      this.mensaje="SU PEDIDO SE ENCUENTRA VACIO"
+    }else{
+      this.mensaje="SU PEDIDO:"
+    }
   }
 
   eliminar(i){

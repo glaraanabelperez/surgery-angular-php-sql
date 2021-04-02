@@ -13,8 +13,8 @@ import { ServiceGeneral } from '../servicios-generales/service-general.service';
     p:Publicaciones;
 
     constructor(private serviceG:ServiceGeneral) {
-      this.p=this.serviceG.getVisualizarCard();
-      console.log("acacaca card", this.serviceG.getVisualizarCard())
+      this.p=this.serviceG.getObjetoParaCardProd();
+      console.log("Card", this.serviceG.getObjetoParaCardProd())
      }
      
     ngOnInit(): void {

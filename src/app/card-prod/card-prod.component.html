@@ -1,23 +1,26 @@
-<div>
-
-	<div class="list-card2">
-		<div class="list-card" >
-			<div class="foto">
-				<img class="imgCard" [src]="'assets/' + p.nombreImagen">
-			</div>
-			<div class="info-derecha">
-				<div class="info">
-					<p >{{p.subtitulo}}</p>
-					<h3>{{p.titulo}}</h3>
-					<p style="margin-bottom: 10px;">{{p.descripcion}}</p>
-					<p>codigo: {{p.codigo_producto}}</p>
-	
-					<p><i class="fa fa-circle" aria-hidden="true" style="margin-right: 3px;"></i>${{p.precio}}</p>
-
+<div class="conteiner-pedido">
+	<button routerLink="/list-card"  class="btn-cierreCard">
+		<i class="fa fa-window-close" aria-hidden="true"  ></i>
+	  </button>
+	<div class="scrollCard">
+		<div class="list-card2">
+			<div class="list-card" >
+				<div class="foto">
+					<img class="imgCard" [src]="'assets/' + p.nombreImagen">
+				</div>
+				<div class="info-derecha">
+					<div class="info">
+						<h3>{{p.subtitulo}}</h3>
+						<h2>{{p.titulo}}</h2>
+						<div class="descripcion">
+							<p style="margin-bottom: 10px;">{{p.descripcion}}</p>
+						</div>
+						<p>codigo: {{p.codigo_producto}}</p>
+						<br>
+						<p><i class="fa fa-circle" aria-hidden="true" style="margin-right: 3px;"></i>${{p.precio}}</p>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
+	</div>	
 </div>
-
-

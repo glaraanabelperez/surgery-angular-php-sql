@@ -1,5 +1,5 @@
 @import '../styles/tipografias.scss';
-.cantidad{
+.mano{
 	position: fixed;
 	right: 48px;
 	top: 470px;
@@ -33,7 +33,7 @@
 	}
 	.info-derecha{
 		width: 100%;
-		margin-left: 7%;
+		margin: auto;
 	
 		.list-card-botones{
 			display: flex;

@@ -30,6 +30,7 @@ import html2canvas from 'html2canvas'
 
     foto(){    
         window.scrollTo(0,0);
+        
         // html2canvas(document.body).then(canvas => {
         html2canvas(document.getElementById('screen')).then(canvas => {
         this.canvas.nativeElement.src = canvas.toDataURL();

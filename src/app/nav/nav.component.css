@@ -20,7 +20,7 @@
 }
 
 h1 {
-  font-size: 1.4rem;
+  font-size: 1.6rem;
   color: #4e4e4e;
   padding: 10px 0px 0px 0px;
   display: block;
@@ -29,14 +29,14 @@ h1 {
 }
 
 h2 {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: #505e47;
   font-weight: bold;
   letter-spacing: 0.1pc;
 }
 
 h3 {
-  font-size: 1.3em;
+  font-size: 1.2em;
 }
 
 h4 {
@@ -179,23 +179,23 @@ form label {
 
 /* Smartphones (portrait and landscape) ----------- */
 /* iPads (portrait and landscape) ----------- */
-.navPedidos-productos {
+.navNav {
   height: 35%;
   position: static;
   width: 100%;
 }
 
-.navPedidos-productos hr {
+.navNav hr {
   width: 100%;
 }
 
-.navPedidos-productos div.scrollmenu {
+.navNav div.scrollmenu {
   overflow: auto;
   white-space: nowrap;
   width: 90%;
 }
 
-.navPedidos-productos div.scrollmenu a {
+.navNav div.scrollmenu a {
   display: inline-block;
   text-align: center;
   text-decoration: none;
@@ -203,15 +203,15 @@ form label {
   font-size: 1.2rem;
 }
 
-.navPedidos-productos div.scrollmenu a i {
+.navNav div.scrollmenu a i {
   margin-left: 5px;
 }
 
-.navPedidos-productos div.scrollmenu a:hover {
-  color: #313115;
+.navNav div.scrollmenu a:hover {
+  color: white;
 }
 
-.navPedidos-productos .menuPaginaI {
+.navNav .menuPaginaI {
   margin-top: 3%;
   margin-bottom: 3%;
   margin-left: 5%;
@@ -219,9 +219,9 @@ form label {
   background-color: white;
 }
 
-.navPedidos-productos .menuPaginaI a {
+.navNav .menuPaginaI a {
   font-size: 1rem;
-  color: #313115;
+  color: black;
   display: inline-block;
   text-align: center;
   text-decoration: none;
@@ -229,7 +229,7 @@ form label {
   margin-top: 2%;
 }
 
-.navPedidos-productos .nav-Secundario {
+.navNav .nav-Secundario {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -242,17 +242,17 @@ form label {
   width: 90%;
 }
 
-.navPedidos-productos .conteiner1 {
+.navNav .conteiner1 {
   width: 0%;
   background: none;
 }
 
-.navPedidos-productos .conteiner1 .buttonsLaterales {
+.navNav .conteiner1 .buttonsLaterales {
   position: fixed;
   top: 250px;
   right: 30px;
   background-color: white;
-  border: 1px solid rgba(26, 26, 25, 0.3);
+  border: 1px solid gainsboro;
   border-radius: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -268,34 +268,34 @@ form label {
       justify-content: space-around;
 }
 
-.navPedidos-productos .conteiner1 .buttonsLaterales .fa-instagram {
+.navNav .conteiner1 .buttonsLaterales .fa-instagram {
   font-size: 17px;
 }
 
-.navPedidos-productos .conteiner1 .buttonsLaterales .fa-home {
+.navNav .conteiner1 .buttonsLaterales .fa-home {
   font-size: 17px;
 }
 
-.navPedidos-productos .conteiner1 .buttonsLaterales .fa-facebook-square {
+.navNav .conteiner1 .buttonsLaterales .fa-facebook-square {
   font-size: 17px;
 }
 
-.navPedidos-productos .conteiner1 .buttonsLaterales .fa-envelope {
+.navNav .conteiner1 .buttonsLaterales .fa-envelope {
   color: #313115;
   font-size: 17px;
 }
 
-.navPedidos-productos .conteiner1 .buttonsLaterales .fa-arrow-circle-up {
+.navNav .conteiner1 .buttonsLaterales .fa-arrow-circle-up {
   position: absolute;
   bottom: -50%;
   color: #313115;
   font-size: 17px;
 }
 
-.navPedidos-productos .conteiner1 .buttonsLaterales .fa-shopping-cart {
+.navNav .conteiner1 .buttonsLaterales .fa-shopping-cart {
   right: 10px;
   bottom: -110%;
-  color: rgba(26, 26, 25, 0.3);
+  color: gainsboro;
   font-size: 30px;
   width: 45px;
   height: 45px;
@@ -304,6 +304,37 @@ form label {
   background-color: white;
   cursor: pointer;
   border-radius: 10px;
+}
+
+.navNav .btn-cierreCard {
+  position: absolute;
+  top: 10%;
+  right: 10%;
+  background: none;
+  border: 1px solid gainsboro;
+  height: 40px;
+  width: 40px;
+  border-radius: 100%;
+}
+
+.navNav .nav-cardComponente {
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  left: 0px;
+  top: 12%;
+  padding: 2%;
+}
+
+.navNav .nav-pedido {
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  left: 0px;
+  top: 12%;
+  padding: 2%;
 }
 
 @media only screen and (min-width: 320px) and (max-width: 768px) {

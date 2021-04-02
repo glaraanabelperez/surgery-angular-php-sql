@@ -1,111 +1,141 @@
-  
-  @import '../styles/tipografias.scss';
-  .ocualar{
-    display: none;
-  }
-  .mostrar{
-    display: block;
-  }
-  .fa-window-close{
+ @import '../styles/tipografias.scss';
+
+ .conteiner-pedido{
+  background-color: white;
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  left: 0px;
+  top: 12%;
+  padding: 2%;
+  .btn-cierreCard{
     position: absolute;
-    top: 10px;
-    left: 10px;      
-    border: none;
-  }
-  .fa-user-circle{
-    position: absolute;
-    right: 5px;
-    font-size: 50px;
-  }
-
-  .fa-share-square{
-    font-size: 26px;
-  }
-  .fa-archive{
-    font-size: 30px;
-  }
-  .card {
-    background: #fff;
-    border-radius: 4px;
-    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-    width: 70%;
-    border-top-right-radius: 25px;
-    border-bottom-right-radius: 25px;
-    margin: 5% 10% 10% 0% !important;
-  }
-  .card h2 {
-    width: 100%;
-    padding: 0 1rem;
-  }
-  .card .title {
-    padding: 1rem;
-    text-align: right;
-    justify-content: center;
-    color: black;
-    font-weight: bold;
-    font-size: 12px;
-  }
-
-  .card .desc {
-    padding: 0.5rem 1rem;
-    font-size: 12px;
-  }
-  .card .actions {
-
-    align-items: center;
-    padding: 0.5rem 1rem;
-  } 
-  .title-total {
-    padding: 2.5em 1.5em 1.5em 1.5em;
-  }
-  
-  button {
-    border: none;
+    top: 10%;
+    right: 10%;
     background: none;
-    font-size: 24px;
-    color: #f1288d;
-    cursor: pointer;
-    transition:.5s;
-    &:hover{
-      color: #a00872  ;
-      transform: rotate(22deg)
+    border: 1px solid $color-gris;
+    height: 40px;
+    width: 40px;
+    border-radius: 100%;
+  }
+  .scrollCard{
+    overflow: auto;
+    height: 400px;
+    border: 1px solid $color-gris;
+    padding: 1%;
+  }
+  .list-card2{
+    padding: 1%;
+    width: 100%;
+    justify-content: center;
+    .mensaje{
+      display: block;
+      text-align: center;
+      margin-bottom: 2%;
     }
-  }
-  .btonesAdmin{
-    display: flex;
-    flex-direction: row;
-  }
-  .fa-whatsapp{
-    color: rgb(112, 221, 3);
+    .list-card{
+      background-color: whitesmoke;
+      margin:auto;
+      width: 98%;
+      height: 50%;
+      padding: 1%;
+      .foto{
+        width: 100%;
+        box-sizing: border-box;
+        .imgCard{
+          padding: 10%;
+          width: 100%;
+        }
+      }
+      .info-derecha{
+        width: 100%;
+        margin-left: 7%;
+        .boton-eliminar{
+          background: none;
+          border: 1px solid $color-gris;
+          height: 40px;
+          width: 40px;
+          border-radius: 100%;
+        }
+      }
+    }
+    .fa-whatsapp{
+      font-size: 40px;
+      color: rgb(112, 221, 3);
+    }
+    .finalizarPedido{
+      position: fixed;
+      right: 10%;
+      bottom: 28%;
+    }
   }
   
-  @media only screen  and (min-width : 320px)  and (max-width : 765px) {
+ }
+  
+  /* Smartphones (portrait and landscape) ----------- */  
+  @media only screen  
+  and (min-width : 320px)  
+  and (max-width : 480px) {  
+  /* Styles */  
+  
+  .list-card2{
+    .list-card{
+      width: 100%;
+      padding: 1%;
+    }
+    .foto{	
+      .imgCard{
+        padding: 5%;
+      }
+    }
+    .info-derecha{
+      width: 100%;
+      margin-left: 5%;
+      display: flex;
+      flex-direction: row;
+      .info{
+        margin-top: 1%;
+        width: 80%;
+      }
+      .list-card-botones{
+        margin-top: 7%;
+      }
+    }
+  }
+}  
 
-  div .card {
-    background: #fff;
-    margin: 5% 10% 10% 0% !important;
-    border-radius: 25px;
-    box-shadow: 0px 14px 80px rgba(34, 35, 58, 0.5);
-    width: 75%;
-  }
-    .fa-user-circle{
-      position: absolute;
-      right: 5px;
-      font-size: 50px;
+  
+  
+   
+  /* iPads (portrait and landscape) ----------- */  
+  @media only screen  
+  and (min-width : 768px)  
+  and (max-width : 1024px) {  
+  /* Styles */  
+    
+    .list-card{
+      .foto{
+        width: 75%;
+        box-sizing: border-box;
+        .imgCard{
+          padding: 5%;
+          width: 100%;
+          border-bottom-left-radius: 40px;
+          border-top-right-radius: 40px;
+        }
+      }
+      .info-derecha{
+        width: 100%;
+        margin-left: 5%;
+        display: flex;
+        flex-direction: row;
+        .info{
+          margin-top: 1%;
+          width: 80%;
+        }
+        .list-card-botones{
+          margin-top: 7%;
+        }
+      }
     }
-
-    .fa-share-square{
-      font-size: 26px;
-    }
-    .fa-archive{
-      font-size: 30px;
-    }
-  form input{
-    width: 100%;
-  }
-  .title-total{
-    h2 {
-      font-size: 1.4rem !important;
-    }
-  }
-}
+  }  

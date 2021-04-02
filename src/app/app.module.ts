@@ -3,7 +3,6 @@ import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 
-import { ServiceCategoriasEstado } from './protected/servicios-categorias-estados/service-categroias-estado.service';
 import { ServiceGeneral } from './servicios-generales/service-general.service';
 import { ServicePedidos } from './servicios-pedidos/service-pedidos.service';
 import { ApiDatos } from './models/api-datos.model';
@@ -39,9 +38,9 @@ const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
   {path: 'list-card', component: ListCardComponent},
-  {path: 'card', component: ListCardComponent},
+  {path: 'card', component: CardProdComponent},
   {path: 'login', component:LogInComponent},
-  // {path: 'list-card/:parametro', component: ListCardComponent },
+  {path: 'pedidos', component:VerPedido},
 
   {
     path: 'protected',
@@ -68,7 +67,7 @@ const routes: Routes = [
     ListaProdAdmin,
     PublicarInstagram,
     VerPedido,
-    CardProdComponent
+    CardProdComponent,
   ],
   imports: [
     RouterModule.forRoot(routes),
@@ -83,7 +82,6 @@ const routes: Routes = [
     ServiceGeneral, 
     AuthService, 
     GuardsGuard, 
-    ServiceCategoriasEstado, 
     ServicePedidos,
     ApiDatos ,
     {provide: ObjetoCategoria}

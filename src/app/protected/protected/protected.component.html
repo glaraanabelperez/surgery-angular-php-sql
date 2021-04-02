@@ -12,11 +12,11 @@
             
                   <div class="form-group col-md-3">
                     <label for="categorias">Categoria</label>
-                    <select  class="form-control" formControlName="categorias" [ngClass]="{'is-invalid': submitted && f.categorias.errors}">
+                    <select formControlName="categorias" class="form-control" [ngClass]="{'is-invalid': submitted && f.categorias.errors}">
                       <option value="">Seleccionar</option>
-                      <option [value]="c.codigo_categorias"  *ngFor="let c of categorias">{{c.descripcion}}</option>
+                      <option *ngFor="let c of categoriasBBDD" [value]="c.codigo_categoria">{{c.descripcion}}</option>
                       <div *ngIf="submitted && f.categorias" class="invalid-feedback">
-                        <div *ngIf="f.categorias.errors.required"> Por favor ingrese datos</div>
+                        <div *ngIf="f.categorias.errors?.required"> Por favor ingrese datos</div>
                       </div>
                     </select>
                   </div>
@@ -34,7 +34,7 @@
   
                   <div class="form-group col-md-3">
                     <label for="titulo">Titulo</label>
-                    <input type="text" class="form-control" placeholder="Campo Obligatorio" 
+                    <input type="text" class="form-control" placeholder="Campo Obligatorio" [value]=""
                     formControlName="titulo" [ngClass]="{'is-invalid': submitted && f.titulo.errors}" >
                   </div>
                   <div *ngIf="submitted && f.titulo.errors" class="invalid-feedback">

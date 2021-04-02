@@ -1,12 +1,7 @@
-import { Component, EventEmitter, Injector, Input, OnInit, Output, ViewChild} from '@angular/core';
-import { Observable } from 'rxjs';
-import { ListCardComponent } from '../lista-card/list-card.component';
+import { Component, OnInit} from '@angular/core';
 import { ApiDatos } from '../models/api-datos.model';
-import { ObjetoCategoria } from '../models/objeto-categoria.model';
-import { Publicaciones } from '../models/publicaciones';
-import { ServiceCategoriasEstado } from '../protected/servicios-categorias-estados/service-categroias-estado.service';
+import { Categorias } from '../models/categorias';
 import { ServiceGeneral } from '../servicios-generales/service-general.service';
-import { ServicePedidos } from '../servicios-pedidos/service-pedidos.service';
 
 
 @Component({
@@ -17,70 +12,46 @@ import { ServicePedidos } from '../servicios-pedidos/service-pedidos.service';
   })
 
   export class NavComponent implements OnInit {
-    @ViewChild(ListCardComponent) listaProductos: ListCardComponent;
 
+    categorias: Categorias[]=[];
     toggler;
     menuPaginaI;
     mostrar=false;
-    verPedido=false;
-    productoCard=false;
-
-    constructor(private _servicioC:ServiceCategoriasEstado, 
-      public apiDatos:ApiDatos, public _serviciosPedidos: ServicePedidos, public serviceG:ServiceGeneral){
-        this.obtenerCategorias();
-        this.toggler = document.querySelector('.menu__toggler');
-        this.menuPaginaI= document.querySelector('.menuPaginaI');
+    
+    constructor( public _servicioGeneral:ServiceGeneral){
+      this.toggler = document.querySelector('.menu__toggler');
+      this.menuPaginaI= document.querySelector('.menuPaginaI');
+      this.obtenerCategoria();
     }
+
     ngOnInit():void {
     }
 
     mostrarSubmenuPaginaI(){
-        if(this.mostrar==true){
-            this.mostrar=false;
-        }else{
-            this.mostrar=true;
-        }
+      this.mostrar=true;
     }
 
-    mostrarPedido(){
-      if(this.verPedido==true){
-        this.verPedido=false;
-      }else{
-          this.verPedido=true;
-      }
-    }
+    obtenerCategoria(){
+      this._servicioGeneral.obtener_categoria().subscribe(res => { 
+        this.mostrarCategorias(res);
+        console.log("res", res)
+     })
+    }  
 
-    mostrarProductoCard(){
-      if(this.productoCard==true){
-        this.productoCard=false;
-      }else{
-          this.productoCard=true;
-      }
-    }
-
-    obtenerCategorias(){
-        this._servicioC.obtener_categoria().subscribe(res => { 
-          this.mostrarCategorias(res);
-          console.log("res", res)
-       })
-      }   
     mostrarCategorias(res){
-      for(let i=0;i<res.length;i++){
-          let objetoNew= new ObjetoCategoria(res[i].codigo_categoria, res[i].descripcion, false, "proeba");
-          this.apiDatos.add(objetoNew);
+      let i; 
+      for(i=0;i<res.length;i++){
+                this.categorias.push(res[i]);
+                this.categorias.values.toString;
+                console.log("categ", this.categorias[i])
           }
     }
       
-    elegido(d :ObjetoCategoria){
-      this.apiDatos.setCategoriaElegiga(d.codigo_categoria);
-      this.listaProductos.establecerCategoria(d);
+    elegido(d :Categorias){
+      this._servicioGeneral.setCatgeoriasElegida(d);
+      this._servicioGeneral.suscribeOnChange(d);
+      console.log("categoria legida", d)
     }
 
-    verPublicacion(d :Publicaciones){
-      this.serviceG.setVisualizarCard(d);
-      console.log(this.serviceG.getVisualizarCard());
-      this.productoCard=true;
-      console.log(this.productoCard)
-    }
 }
   

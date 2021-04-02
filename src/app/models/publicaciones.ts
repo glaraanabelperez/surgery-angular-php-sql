@@ -1,6 +1,6 @@
 export interface Publicaciones{
     codigo_producto:number;
-    categorias:string;
+    categorias:number;
     estado:string;
     titulo:string;
     subtitulo:string;
