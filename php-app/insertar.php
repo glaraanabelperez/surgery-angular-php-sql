@@ -8,12 +8,8 @@
 
     function connect()
     {
-<<<<<<< HEAD
-      $connect = mysqli_connect('localhost','root', '', 'tienda');
-      // $connect = mysqli_connect('localhost','id16388186_matizprograming', '!Lara30306[jose]', 'id16388186_tienda');
-=======
+
        $connect = mysqli_connect();
->>>>>>> c3fb0c2fd9f246da54e883a35ea7671422b3fc3a
 
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
