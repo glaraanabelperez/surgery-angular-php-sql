@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Inject } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import { ServiceGeneral } from 'src/app/servicios-generales/service-general.service';
-import { Categorias } from 'src/app/models/categorias';
-import { Publicaciones } from 'src/app/models/publicaciones';
-import { Console } from 'console';
+import { ServiceGeneral } from 'src/app/core/servicios-generales/service-general.service';
+import { Categorias } from 'src/app/core/models/categorias';
+import { Publicaciones } from 'src/app/core/models/publicaciones';
 
 declare var $:any;
 
@@ -19,7 +18,7 @@ declare var $:any;
 export class ProtectedComponent implements OnInit {
   estado: String[]=[];
   fechaHoy:any;
-  categoriasBBDD :Categorias[] = [];
+  categoriasObtenidas :Categorias[] = [];
   publicacionEditar: Publicaciones[] = [];
 
   uploadForm: FormGroup;
@@ -31,7 +30,8 @@ export class ProtectedComponent implements OnInit {
   message: string;
   temp;
 
-  constructor( private _servicioGeneral:ServiceGeneral, private formBuilder:FormBuilder, @Inject(DOCUMENT) private document: Document) {
+  constructor( private _servicioGeneral:ServiceGeneral, private formBuilder:FormBuilder,
+     @Inject(DOCUMENT) private document: Document) {
     this.estado= _servicioGeneral.obtener_estado();
     this.obtenerCategorias();
     this.getFecha();
@@ -67,26 +67,13 @@ export class ProtectedComponent implements OnInit {
     var d = new Date();
     this.fechaHoy = d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate();
   }
+
   // IMAGEN EN FORM && SERVIDOR
   guardarImagenEnFormGroup(files){
     this.imagenPrevisualizar=files;
     let imagen = files[0];
     this.uploadForm.controls['nombreImagen'].setValue(imagen ? imagen.name : ''); // <-- Set Value for Validation
     // this.uploadForm.controls['avatar'].setValue(imagen ? imagen.name : ''); 
-  }
-  
-  guardarArchivoServidor(files){
-      let fileImg=new FormData();
-      fileImg.append('file', files[0]);
-      console.log("IMAGEN", fileImg);
-      this._servicioGeneral.guardarArchivoServidor(fileImg).subscribe(
-        datos=>{
-          if(datos['resultado']=='OK'){
-            console.log(datos['mensaje']);
-          }else{ console.log("NO SE PUDO CONECTAR CON EL SERVIDOR");
-        }
-        }
-      );
   }
 
   previsualizarImg(files){
@@ -119,12 +106,27 @@ export class ProtectedComponent implements OnInit {
     this._servicioGeneral.borrarArchivoServidor(this.imgBorrarServidor).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
-          console.log(datos['mensaje']);
+          console.log(datos['resultado']);
         }else{ console.log("NO SE PUDO CONECTAR CON EL SERVIDOR");
       }}
-  ); }
+  ); 
+}
+guardarArchivoServidor(files){
+  let fileImg=new FormData();
+  fileImg.append('file', files[0]);
+  console.log("IMAGEN a guardar", files[0]);
+  
+  this._servicioGeneral.guardarArchivoServidor(fileImg).subscribe(
+    datos=>{
+      if(datos['resultado']=='OK'){
+          console.log(datos['mensaje']);
+        }else{ 
+           console.log("NO SE PUDO CONECTAR CON EL SERVIDOR");
+          }
+    }
+  );
+}
 
-  //INTERACCION BBDD
   obtenerCategorias(){
     this._servicioGeneral.obtener_categoria().subscribe(res => { 
       console.log("res", res);
@@ -134,9 +136,9 @@ export class ProtectedComponent implements OnInit {
 
   mostrarCategorias(res:[]){
     for(let i=0;i<res.length;i++){
-              this.categoriasBBDD.push(res[i]);
-              this.categoriasBBDD.values.toString;
-        }
+      this.categoriasObtenidas.push(res[i]);
+      this.categoriasObtenidas.values.toString;
+     }
   }
 
   insertarDatos(){
@@ -144,14 +146,12 @@ export class ProtectedComponent implements OnInit {
     this._servicioGeneral.insertarDatos(this.uploadForm.value).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
-          console.log(datos['mensaje']);
         }else{ console.log("NO SE PUDO CONECTAR");}
       }
     );
   }
 
   editarDatos() {
-    console.log("form", this.uploadForm.value);
     this._servicioGeneral.editarDatos(this.uploadForm.value).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
@@ -160,8 +160,8 @@ export class ProtectedComponent implements OnInit {
       }
     );  
   }
-    //SUBMITTED  
-    submitted=false;
+
+  submitted=false;
     onSubmit(){
       this.submitted=true;
       if(this.uploadForm.invalid){
@@ -169,31 +169,31 @@ export class ProtectedComponent implements OnInit {
       }else{
         if(this.accionBtnFormulario=="editar"){
           if(this.imgURL!=null){
+            this.borrarArchivoServidor();
             this.guardarArchivoServidor(this.imagenPrevisualizar);
             console.log("img previsualizar line 177", this.imagenPrevisualizar)
-            this.borrarArchivoServidor();
           }
           this.editarDatos();
           alert('Publicacion Editada');
-          this.limpiar();
-
         }
         if(this.accionBtnFormulario=="nuevo"){
           this.guardarArchivoServidor(this.imagenPrevisualizar);
           console.log("img previsualizar line 177", this.imagenPrevisualizar)
           this.insertarDatos();
           alert('Publicacion Cargada');
-          this.limpiar();
         }
       }
+      this.accionBtnFormulario="nuevo";
+         this.limpiar();
     }
 
     limpiar(){
       this.document.location.reload(); 
+      // this.router.navigate(['/inicio']);
+
     }
 
     editarPubliId(e: Publicaciones){
-
       this.uploadForm.controls['codigo_producto'].setValue(e.codigo_producto ? e.codigo_producto: ''); // <-- Set Value for Validation
       this.uploadForm.controls['categorias'].setValue(e.categorias ? e.categorias: ''); // <-- Set Value for Validation
       this.uploadForm.controls['estado'].setValue(e.estado ? e.estado : ''); // <-- Set Value for Validation
@@ -204,10 +204,9 @@ export class ProtectedComponent implements OnInit {
       this.uploadForm.controls['fechaAlta'].setValue(e.fechaAlta ? e.fechaAlta : ''); // <-- Set Value for Validation
       this.uploadForm.controls['fechaBaja'].setValue(e.fechaBaja ? e.fechaBaja : ''); // <-- Set Value for Validation
       this.uploadForm.controls['precio'].setValue(e.precio ? e.precio : ''); // <-- Set Value for Validation
-
-      window.scrollTo(0,0)
+      window.scrollTo(0,0);
       if(e.nombreImagen!=null){
-        this. imgEditarForm=e['nombreImagen'];
+        this.imgEditarForm=e['nombreImagen'];
       }
       this.accionBtnFormulario="editar";
       console.log("categorias", e.categorias);

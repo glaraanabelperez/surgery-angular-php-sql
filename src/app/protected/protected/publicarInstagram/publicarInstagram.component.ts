@@ -1,7 +1,7 @@
 import { Component, OnInit , Input} from '@angular/core';
-import { Publicaciones } from 'src/app/models/publicaciones';
+import { Publicaciones } from 'src/app/core/models/publicaciones';
 import { ElementRef, ViewChild } from '@angular/core';
-import { ServiceGeneral } from 'src/app/servicios-generales/service-general.service';
+import { ServiceGeneral } from 'src/app/core/servicios-generales/service-general.service';
 import html2canvas from 'html2canvas'
 // declare var html2canvas: Html2CanvasStatic;
 

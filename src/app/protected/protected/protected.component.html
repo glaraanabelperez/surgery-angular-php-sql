@@ -14,7 +14,7 @@
                     <label for="categorias">Categoria</label>
                     <select formControlName="categorias" class="form-control" [ngClass]="{'is-invalid': submitted && f.categorias.errors}">
                       <option value="">Seleccionar</option>
-                      <option *ngFor="let c of categoriasBBDD" [value]="c.codigo_categoria">{{c.descripcion}}</option>
+                      <option *ngFor="let c of categoriasObtenidas" [value]="c.codigo_categoria">{{c.descripcion}}</option>
                       <div *ngIf="submitted && f.categorias" class="invalid-feedback">
                         <div *ngIf="f.categorias.errors?.required"> Por favor ingrese datos</div>
                       </div>

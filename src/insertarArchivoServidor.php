@@ -1,6 +1,6 @@
 <?php
-    header("Access-Control-Allow-Origin: *");
-    header("Access-Control_Allow-Headers: origin, X-Requested-With,Content-Type, Accept");//le pide acceso al header
+    header("Access-Control-Allow-Origin", "*");
+    header("Access-Control_Allow-Headers", "Origin, X-Requested-With,Content-Type, Accept");//le pide acceso al header
     header("Accept:application/json, text/plain, */*");
 
     var_dump($_FILES);
@@ -19,8 +19,9 @@
         $response->resultado='OK';
 
        }else{
-           $response->resultado='Error';
+           $response->resultado='no';
           }
         header('Content-Type: application/json');
         echo json_encode($response);//muestra el json , el mensaje
+        
 ?>

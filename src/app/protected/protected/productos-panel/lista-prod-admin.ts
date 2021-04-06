@@ -1,7 +1,7 @@
 import { Component, OnInit , Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { ServiceGeneral } from '../../../servicios-generales/service-general.service';
-import { Publicaciones } from 'src/app/models/publicaciones';
+import { ServiceGeneral } from '../../../core/servicios-generales/service-general.service';
+import { Publicaciones } from 'src/app/core/models/publicaciones';
 
 
 @Component({
