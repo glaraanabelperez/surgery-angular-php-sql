@@ -6,7 +6,6 @@
     $params=json_decode($json);//decodifica el json y guarda en params
     function connect()
     {
-
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
       }

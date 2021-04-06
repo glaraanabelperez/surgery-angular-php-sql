@@ -1,0 +1,155 @@
+@import '../../shared/styles/tipografias.scss';
+
+.mano{
+	position: fixed;
+	right: 48px;
+	top: 470px;
+	height: 30px;
+	width: 30px;
+	border-radius: 5px;
+	text-align: center;
+	padding:1%;
+	.fa-hand-pointer-o{
+		font-size: 20px;
+		color: white;
+	}
+}
+.list-card{
+	background-color: $color-gris-claro;
+	border: $border;
+	width: 90%;
+	box-sizing: content-box;
+	display: flex;
+	flex-direction: row;
+	margin: 3% 2% 3% 5%;
+	.foto{
+		width: 75%;
+		box-sizing: border-box;
+		.imgCard{
+			padding: 10%;
+			width: 100%;
+			border-bottom-left-radius: 20px;
+			border-top-right-radius: 20px;
+		}
+	}
+	.info-derecha{
+		width: 100%;
+		margin: auto;
+	
+		.list-card-botones{
+			display: flex;
+			flex-direction: row;
+			text-align: right;
+			margin-top: 7%;
+			.botonAdd{
+				padding: 10px;
+				height: 100%;
+				border: $border;
+				margin:0%;
+				background-color: white;
+				display: block;
+				text-align: center
+			}
+		};
+	}
+}
+
+/* Smartphones (portrait and landscape) ----------- */  
+@media only screen  
+and (min-width : 320px)  
+and (max-width : 480px) {  
+/* Styles */  
+.list-card{
+	background-color: $color-gris-claro;
+	border: $border;
+	width: 90%;
+	box-sizing: content-box;
+	display: flex;
+	flex-direction: row;
+	margin: 3% 2% 3% 5%;
+	.foto{
+		width: 75%;
+		box-sizing: border-box;
+		.imgCard{
+			padding: 5%;
+			width: 100%;
+			border-bottom-left-radius: 20px;
+			border-top-right-radius: 20px;
+		}
+	}
+	.info-derecha{
+		width: 100%;
+		margin-left: 5%;
+		display: flex;
+		flex-direction: row;
+		.info{
+			margin-top: 1%;
+			width: 80%;
+		}
+		.list-card-botones{
+			margin-top: 7%;
+
+			.botonAdd{
+				padding: 10px;
+				height: 100%;
+				border: $border;
+				margin:0%;
+				background-color: white;
+				display: block;
+				text-align: center
+			}
+		};
+	}
+}
+}  
+
+ 
+/* iPads (portrait and landscape) ----------- */  
+@media only screen  
+and (min-width : 768px)  
+and (max-width : 1024px) {  
+/* Styles */  
+
+.list-card{
+	background-color: $color-gris-claro;
+	border: $border;
+	width: 90%;
+	box-sizing: content-box;
+	display: flex;
+	flex-direction: row;
+	margin: 3% 2% 3% 5%;
+	.foto{
+		width: 75%;
+		box-sizing: border-box;
+		.imgCard{
+			padding: 5%;
+			width: 100%;
+			border-bottom-left-radius: 20px;
+			border-top-right-radius: 20px;
+		}
+	}
+	.info-derecha{
+		width: 100%;
+		margin-left: 5%;
+		display: flex;
+		flex-direction: row;
+		.info{
+			margin-top: 1%;
+			width: 80%;
+		}
+		.list-card-botones{
+			margin-top: 7%;
+
+			.botonAdd{
+				padding: 10px;
+				height: 100%;
+				border: $border;
+				margin:0%;
+				background-color: white;
+				display: block;
+				text-align: center
+			}
+		};
+	}
+ }
+}  

@@ -1,0 +1,92 @@
+@import '../../shared/styles/tipografias.scss';
+
+.contenedor-cabecera{
+    background-color: white;
+    display: flex;
+    flex-direction: row;
+    height: 25%;
+    width: 100vw;
+    margin-bottom: 1%;
+    border: solid 1px gray;
+    font-size: $font-tamanio-botones;
+    .logo{
+        border: solid 1px $color-gris;
+        width: 20%;
+        text-align: center;
+        img {
+            width: 100%;
+            background-size: cover;
+        }
+    }
+    .titulo{
+        border: solid 1px $color-gris;
+        width: 50%;
+        text-align: center;
+        font-size: 2rem;
+        margin:auto;
+        padding: 2%;
+    }
+      
+    .botonCabecera{
+        .fa-shopping-cart{
+            color:$color-gris;
+            font-size: 30px;
+        }
+        .fa-user-circle{
+            font-size: 30px;
+        }
+        width: 15%;
+        border: 1px solid $color-gris;
+        background-color: white;
+        cursor: pointer;
+    }
+
+       
+}
+
+/* Smartphones (portrait and landscape) ----------- */  
+@media  screen  
+and (min-width : 320px)  
+and (max-width : 768px) {  
+    div .contenedor-cabecera{
+        width: 100vw;
+        margin: 0%;
+    } 
+    .botonCabecera{
+        .fa-shopping-cart{
+            color:$color-gris;
+            font-size: 30px;
+        }
+        .fa-user-circle{
+            font-size: 30px;
+        }
+        width: 15%;
+        border: 1px solid $color-gris;
+        background-color: white;
+        cursor: pointer;
+    }
+}  
+
+@media only screen  
+and (min-width : 768px)  
+and (max-width : 1024px) {  
+    .contenedor-cabecera{
+        width: 100vw;
+        margin: 0%;
+    } 
+    .botonCabecera{
+        .fa-shopping-cart{
+            color:$color-gris;
+            font-size: 30px;
+        }
+        .fa-user-circle{
+            font-size: 40px;
+        }
+        width: 15%;
+        border: 1px solid $color-gris;
+        background-color: white;
+        cursor: pointer;
+    }
+
+}  
+ 
