@@ -5,6 +5,7 @@ import { DOCUMENT } from '@angular/common';
 import { ServiceGeneral } from 'src/app/core/servicios-generales/service-general.service';
 import { Categorias } from 'src/app/core/models/categorias';
 import { Publicaciones } from 'src/app/core/models/publicaciones';
+import { Router } from '@angular/router';
 
 declare var $:any;
 
@@ -31,7 +32,7 @@ export class ProtectedComponent implements OnInit {
   temp;
 
   constructor( private _servicioGeneral:ServiceGeneral, private formBuilder:FormBuilder,
-     @Inject(DOCUMENT) private document: Document) {
+     @Inject(DOCUMENT) private document: Document, private router: Router) {
     this.estado= _servicioGeneral.obtener_estado();
     this.obtenerCategorias();
     this.getFecha();
@@ -39,10 +40,7 @@ export class ProtectedComponent implements OnInit {
     clearTimeout(this.temp);
     this.temp = setTimeout(this.nota, 500);
     this.accionBtnFormulario="nuevo";
-   }
-
-  ngOnInit(): void {
-      this.uploadForm=this.formBuilder.group({
+    this.uploadForm=this.formBuilder.group({
       codigo_producto:[null],
       categorias:['',[Validators.required]],
       estado:['',[Validators.required]],
@@ -51,9 +49,12 @@ export class ProtectedComponent implements OnInit {
       descripcion:['', [Validators.required]],
       nombreImagen: [null],
       fechaAlta:[this.fechaHoy],
-      fechaBaja:[null],
       precio:[null],
     });
+   }
+
+  ngOnInit(): void {
+      
   }
 
   get f(){ return this.uploadForm.controls;}
@@ -119,7 +120,9 @@ guardarArchivoServidor(files){
   this._servicioGeneral.guardarArchivoServidor(fileImg).subscribe(
     datos=>{
       if(datos['resultado']=='OK'){
-          console.log(datos['mensaje']);
+          console.log(datos['resultado']);
+          console.log("acacacaccacacacaccacacac");
+
         }else{ 
            console.log("NO SE PUDO CONECTAR CON EL SERVIDOR");
           }
@@ -155,7 +158,7 @@ guardarArchivoServidor(files){
     this._servicioGeneral.editarDatos(this.uploadForm.value).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
-          console.log(datos['mensaje']);
+          console.log(datos['resultado']);
         }else{ console.log("NO SE PUDO CONECTAR");}
       }
     );  
@@ -171,7 +174,7 @@ guardarArchivoServidor(files){
           if(this.imgURL!=null){
             this.borrarArchivoServidor();
             this.guardarArchivoServidor(this.imagenPrevisualizar);
-            console.log("img previsualizar line 177", this.imagenPrevisualizar)
+            console.log("img previsualizar line 177", this.imagenPrevisualizar);
           }
           this.editarDatos();
           alert('Publicacion Editada');
@@ -188,9 +191,8 @@ guardarArchivoServidor(files){
     }
 
     limpiar(){
-      this.document.location.reload(); 
-      // this.router.navigate(['/inicio']);
-
+      // this.document.location.reload(); 
+      this.router.navigate(['/home']);
     }
 
     editarPubliId(e: Publicaciones){
@@ -202,7 +204,6 @@ guardarArchivoServidor(files){
       this.uploadForm.controls['descripcion'].setValue(e.descripcion ? e.descripcion : ''); // <-- Set Value for Validation
       this.uploadForm.controls['nombreImagen'].setValue(e.nombreImagen ? e.nombreImagen : ''); // <-- Set Value for Validation
       this.uploadForm.controls['fechaAlta'].setValue(e.fechaAlta ? e.fechaAlta : ''); // <-- Set Value for Validation
-      this.uploadForm.controls['fechaBaja'].setValue(e.fechaBaja ? e.fechaBaja : ''); // <-- Set Value for Validation
       this.uploadForm.controls['precio'].setValue(e.precio ? e.precio : ''); // <-- Set Value for Validation
       window.scrollTo(0,0);
       if(e.nombreImagen!=null){
