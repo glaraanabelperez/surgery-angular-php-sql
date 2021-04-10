@@ -33,6 +33,7 @@ export class ProtectedComponent implements OnInit {
 
   constructor( private _servicioGeneral:ServiceGeneral, private formBuilder:FormBuilder,
      @Inject(DOCUMENT) private document: Document, private router: Router) {
+
     this.estado= _servicioGeneral.obtener_estado();
     this.obtenerCategorias();
     this.getFecha();
@@ -69,6 +70,13 @@ export class ProtectedComponent implements OnInit {
     this.fechaHoy = d.getFullYear() + "/" + (d.getMonth()+1) + "/" + d.getDate();
   }
 
+  visualizarNuevaImagenSeleccionada(){
+    //AL EDITAR LA IMAGEN
+    if(this.imgEditarForm){
+      this.imgBorrarServidor=this.imgEditarForm;
+      this. imgEditarForm=null;
+    }
+  }
   // IMAGEN EN FORM && SERVIDOR
   guardarImagenEnFormGroup(files){
     this.imagenPrevisualizar=files;
@@ -95,39 +103,19 @@ export class ProtectedComponent implements OnInit {
     }
   }
 
-  visualizarNuevaImagenSeleccionada(){
-    //AL EDITAR LA IMAGEN
-    if(this.imgEditarForm){
-      this.imgBorrarServidor=this.imgEditarForm;
-      this. imgEditarForm=null;
-    }
-  }
-
-  borrarArchivoServidor() {
-    this._servicioGeneral.borrarArchivoServidor(this.imgBorrarServidor).subscribe(
-      datos=>{
-        if(datos['resultado']=='OK'){
-          console.log(datos['resultado']);
-        }else{ console.log("NO SE PUDO CONECTAR CON EL SERVIDOR");
-      }}
-  ); 
+  borrarArchivoServidor(): boolean {
+    this._servicioGeneral.borrarArchivoServidor(this.imgBorrarServidor) 
+    .subscribe( res=> console.log(res), err=> console.log(err));
+    return false;
 }
-guardarArchivoServidor(files){
+
+guardarArchivoServidor(files):boolean{
   let fileImg=new FormData();
   fileImg.append('file', files[0]);
   console.log("IMAGEN a guardar", files[0]);
-  
-  this._servicioGeneral.guardarArchivoServidor(fileImg).subscribe(
-    datos=>{
-      if(datos['resultado']=='OK'){
-          console.log(datos['resultado']);
-          console.log("acacacaccacacacaccacacac");
-
-        }else{ 
-           console.log("NO SE PUDO CONECTAR CON EL SERVIDOR");
-          }
-    }
-  );
+  this._servicioGeneral.guardarArchivoServidor(fileImg)
+    .subscribe( res=> console.log(res), err=> console.log(err));
+    return false;
 }
 
   obtenerCategorias(){
@@ -192,7 +180,7 @@ guardarArchivoServidor(files){
 
     limpiar(){
       // this.document.location.reload(); 
-      this.router.navigate(['/home']);
+      this.router.navigate(['/protected']);
     }
 
     editarPubliId(e: Publicaciones){
