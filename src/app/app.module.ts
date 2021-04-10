@@ -34,6 +34,7 @@ import { from } from 'rxjs';
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch:'full'},
   {path: 'home', component: HomeComponent},
+
   {path: 'list-card', component: ListCardComponent},
   {path: 'card', component: CardProdComponent},
   {path: 'login', component:LogInComponent},
@@ -53,6 +54,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
+
   declarations: [
     AppComponent,
     NavComponent,
@@ -66,6 +68,7 @@ const routes: Routes = [
     VerPedido,
     CardProdComponent,
   ],
+
   imports: [
     BrowserModule,
     HttpClientModule,
@@ -75,11 +78,13 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
   ],
+
   exports: [
     AppComponent,
     ],
+
   schemas: [ 
-    CUSTOM_ELEMENTS_SCHEMA 
+    CUSTOM_ELEMENTS_SCHEMA, 
   ],
   providers: [
     ServiceGeneral, 

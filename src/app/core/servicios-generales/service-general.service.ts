@@ -21,12 +21,13 @@ export class ServiceGeneral {
   verPedidoSubject:Subject <boolean> = new Subject <boolean>();
 
 
-  url='http://localhost/angular/mi-tienda/php-app/';
-  // url2='http://localhost/angular/mi-tienda/src/';
-  url2='http://localhost/Github/miTienda-codigo-Crud-Angular/src/';
+  // url='http://localhost/angular/mi-tienda/php-app/';
+  // // url2='http://localhost/angular/mi-tienda/src/';
+  // url2='http://localhost/Github/miTienda-codigo-Crud-Angular/src/';
+  // url3='http://localhost/Github/';
 
-  // url='/php-app/';
-  // url2='/';
+  url='/php-app/';
+  url2='/';
   
   constructor(private http: HttpClient) { 
     

@@ -12,7 +12,11 @@
     $response=new Result();
     if ($rsta) {
       $response->resultado='OK';
-     }
+
+     }else{
+         $response->resultado='Error';
+        }
+
     header('Content-Type: application/json');
     echo json_encode($response);//muestra el json , el mensaje 
 ?>
