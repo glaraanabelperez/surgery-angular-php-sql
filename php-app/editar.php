@@ -6,6 +6,8 @@
     $params=json_decode($json);//decodifica el json y guarda en params
     function connect()
     {
+        $connect = mysqli_connect();
+
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
       }
@@ -18,8 +20,7 @@
     `estado`='$params->estado',`titulo`='$params->titulo',
     `subtitulo`='$params->subtitulo',
     `descripcion`='$params->descripcion',`nombreImagen`='$params->nombreImagen',
-    `fechaAlta`='$params->fechaAlta',`fechaBaja`='$params->fechaBaja',
-    `precio`='$params->precio' WHERE `codigo_producto`=$id";
+    `fechaAlta`='$params->fechaAlta',`precio`='$params->precio' WHERE `codigo_producto`=$id";
     $respuesta=mysqli_query($co, $sql); 
 
       class Result{}
