@@ -98,29 +98,70 @@ export class ProtectedComponent implements OnInit {
       var reader = new FileReader();
       reader.readAsDataURL(files[0]); 
       reader.onload = (_event) => { 
-        this.imgURL = reader.result; // <-- Previsualizar
+        this.imgURL = reader.result; 
       }
     }
-  }
+  }//FIN PREVISUALIZAR
 
-  borrarArchivoServidor(): boolean {
+  public respuestaImagenBorrada;
+  public resultadoCargaBorrar;
+  borrarArchivoServidor() {
     this._servicioGeneral.borrarArchivoServidor(this.imgBorrarServidor) 
-    .subscribe( res=> console.log(res), err=> console.log(err));
-    return false;
+    .subscribe(
+      response => {
+        this.respuestaImagenBorrada = response; 
+        if(this.respuestaImagenEnviada <= 1){
+          console.log("Error en el servidor"); 
+        }else{
+          if(this.respuestaImagenBorrada.status == "success"){
+            this.resultadoCargaBorrar = 1;
+            console.log("rsta servidor borra Img 1");
+            console.log(this.respuestaImagenBorrada);
+          }else{
+            this.resultadoCargaBorrar = 2;
+            console.log("rsta servidor borrar Img 2");
+            console.log(this.respuestaImagenBorrada);
+          }
+        }
+      },
+      error => {
+        console.log(<any>error.msj, "Error al borrar Img");
+      }
+    );//FIN DE METODO SUBSCRIBE
 }
 
-guardarArchivoServidor(files):boolean{
+public respuestaImagenEnviada;
+public resultadoCarga;
+guardarArchivoServidor(files){
   let fileImg=new FormData();
-  fileImg.append('file', files[0]);
+  fileImg.append('file', files[0], files[0].name); 
   console.log("IMAGEN a guardar", files[0]);
   this._servicioGeneral.guardarArchivoServidor(fileImg)
-    .subscribe( res=> console.log(res), err=> console.log(err));
-    return false;
+  .subscribe(
+    response => {
+      this.respuestaImagenEnviada = response; 
+      if(this.respuestaImagenEnviada <= 1){
+        console.log("Error en el servidor"); 
+      }else{
+        if(this.respuestaImagenEnviada.code == 200 && this.respuestaImagenEnviada.status == "success"){
+          this.resultadoCarga = 1;
+          console.log("resta servidor 1");
+          console.log(this.respuestaImagenEnviada);
+        }else{
+          this.resultadoCarga = 2;
+          console.log("resta servidor 2");
+          console.log(this.respuestaImagenEnviada);
+        }
+      }
+    },
+    error => {
+      console.log(<any>error);
+    }
+  );//FIN DE METODO SUBSCRIBE
 }
 
   obtenerCategorias(){
     this._servicioGeneral.obtener_categoria().subscribe(res => { 
-      console.log("res", res);
       this.mostrarCategorias(res);
    })
 }
@@ -146,7 +187,7 @@ guardarArchivoServidor(files):boolean{
     this._servicioGeneral.editarDatos(this.uploadForm.value).subscribe(
       datos=>{
         if(datos['resultado']=='OK'){
-          console.log(datos['resultado']);
+          console.log(datos['resultado'], "Datos Editados");
         }else{ console.log("NO SE PUDO CONECTAR");}
       }
     );  
@@ -162,14 +203,12 @@ guardarArchivoServidor(files):boolean{
           if(this.imgURL!=null){
             this.borrarArchivoServidor();
             this.guardarArchivoServidor(this.imagenPrevisualizar);
-            console.log("img previsualizar line 177", this.imagenPrevisualizar);
           }
           this.editarDatos();
           alert('Publicacion Editada');
         }
         if(this.accionBtnFormulario=="nuevo"){
           this.guardarArchivoServidor(this.imagenPrevisualizar);
-          console.log("img previsualizar line 177", this.imagenPrevisualizar)
           this.insertarDatos();
           alert('Publicacion Cargada');
         }
@@ -198,11 +237,8 @@ guardarArchivoServidor(files):boolean{
         this.imgEditarForm=e['nombreImagen'];
       }
       this.accionBtnFormulario="editar";
-      console.log("categorias", e.categorias);
-      console.log("uploadForm", this.uploadForm.value);
-
+      console.log("Categoria a Editar", e.categorias);
+      console.log("UploadForm", this.uploadForm.value);
     }
-
+  
 }
-
-
