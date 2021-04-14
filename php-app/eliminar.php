@@ -8,7 +8,7 @@
 
     function connect()
     {
-       $connect = mysqli_connect();
+        $connect = mysqli_connect();
 
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
