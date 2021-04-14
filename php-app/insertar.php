@@ -8,7 +8,8 @@
 
     function connect()
     {
-       $connect = mysqli_connect();
+      $connect = mysqli_connect();
+
       if (mysqli_connect_errno($connect)) {
         die("Failed to connect:" . mysqli_connect_error());
       }
@@ -26,7 +27,7 @@
       $response=new Result();
      if($respuesta==true){
         $response->resultado='OK';
-        $response->mensaje='SE AGRAGO EXITOSAMENTE LA PROPIEDAD';
+        $response->mensaje='SE AGRAGO EXITOSAMENTE LA PUBLICACION';
      }else{
       echo mysqli_error($co);
      // $response->resultado='Error';
