@@ -9,7 +9,7 @@ export class AuthService {
   constructor() { }
 
   login(user:String, password:String):boolean{
-    if(user==='user' && password==='1209'){
+    if(user==='' && password===''){
       let user="user";
       localStorage.setItem('username', user);
       return true;
